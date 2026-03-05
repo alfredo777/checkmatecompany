@@ -1,0 +1,82 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <div>
+        <h1><i class="bi bi-file-text me-2"></i>Gestión de Contenidos</h1>
+        <p class="text-muted">Administra los archivos JSON de contenido</p>
+      </div>
+      <a href="/admin/contents/new" class="btn btn-success">
+        <i class="bi bi-plus-circle me-2"></i>Nuevo Contenido
+      </a>
+    </div>
+  </div>
+  
+  {{#if message}}
+  <div class="alert alert-success alert-dismissible fade show">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  {{/if}}
+  
+  {{#if error}}
+  <div class="alert alert-danger alert-dismissible fade show">
+    {{error}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  {{/if}}
+  
+  <div class="row">
+    {{#each contents}}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card h-100 content-card">
+        <div class="card-header bg-light d-flex justify-content-between">
+          <span class="fw-bold">
+            <i class="bi bi-file-earmark-code text-success me-2"></i>{{this.name}}
+          </span>
+          <span class="badge bg-secondary">{{this.size}}</span>
+        </div>
+        <div class="card-body">
+          <p class="text-muted small">Modificado: {{this.modified}}</p>
+        </div>
+        <div class="card-footer bg-transparent">
+          <div class="btn-group w-100">
+            <a href="/admin/contents/edit/{{this.name}}" class="btn btn-outline-success">
+              <i class="bi bi-pencil"></i> Editar
+            </a>
+            <button onclick="deleteContent('{{this.name}}')" class="btn btn-outline-danger">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div class="col-12">
+      <div class="alert alert-info">
+        No hay archivos de contenido. <a href="/admin/contents/new">Crear el primero</a>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Confirmar Eliminación</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Eliminar <strong id="deleteFilename"></strong>?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <form id="deleteForm" action="/admin/contents/delete" method="POST">
+          <input type="hidden" name="filename" id="deleteFilenameInput">
+          <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

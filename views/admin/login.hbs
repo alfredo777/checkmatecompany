@@ -1,0 +1,52 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <i class="bi bi-shield-lock-fill"></i>
+      <h1>GKrakenCMS</h1>
+      <p>Sistema de Gestión de Contenidos</p>
+    </div>
+    
+    {{#if error}}
+    <div class="alert alert-danger" role="alert">
+      <i class="bi bi-exclamation-triangle me-2"></i>{{error}}
+    </div>
+    {{/if}}
+    
+    {{#if message}}
+    <div class="alert alert-info" role="alert">
+      <i class="bi bi-info-circle me-2"></i>{{message}}
+    </div>
+    {{/if}}
+    
+    <form action="/admin/login" method="POST" class="login-form">
+      <div class="mb-3">
+        <label for="username" class="form-label">
+          <i class="bi bi-person me-1"></i>Usuario
+        </label>
+        <input type="text" class="form-control" id="username" name="username" 
+               required autocomplete="username" autofocus>
+      </div>
+      
+      <div class="mb-3">
+        <label for="password" class="form-label">
+          <i class="bi bi-key me-1"></i>Contraseña
+        </label>
+        <input type="password" class="form-control" id="password" name="password" 
+               required autocomplete="current-password">
+      </div>
+      
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="remember" name="remember">
+        <label class="form-check-label" for="remember">Recordarme</label>
+      </div>
+      
+      <button type="submit" class="btn btn-success w-100">
+        <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
+      </button>
+    </form>
+    
+    <div class="login-footer">
+      <a href="/">← Volver al sitio</a>
+    </div>
+  </div>
+</div>

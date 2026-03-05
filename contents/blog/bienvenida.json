@@ -1,0 +1,17 @@
+{
+  "id": "bienvenida",
+  "title": "Bienvenido al Blog",
+  "slug": "bienvenida",
+  "excerpt": "Este es el primer post de nuestro blog. ¡Bienvenido!",
+  "content": "<p>Bienvenido al blog de checkmatecompany. Este es un post de ejemplo que puedes editar o eliminar desde el panel de administración.</p><p>Desde aquí podrás compartir noticias, actualizaciones y contenido relevante para tu audiencia.</p>",
+  "author": "Admin",
+  "category": "General",
+  "tags": [
+    "bienvenida",
+    "inicio"
+  ],
+  "image": "/assets/images/myimages/blog-default.jpg",
+  "published": true,
+  "created_at": "2026-03-04T21:20:45-06:00",
+  "updated_at": "2026-03-04T21:20:45-06:00"
+}

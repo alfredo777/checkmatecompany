@@ -1,0 +1,119 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <div>
+        <h1><i class="bi bi-journal-richtext me-2"></i>Gestión del Blog</h1>
+        <p class="text-muted">Administra los posts del blog</p>
+      </div>
+      <a href="/admin/blog/new" class="btn btn-success">
+        <i class="bi bi-plus-circle me-2"></i>Nuevo Post
+      </a>
+    </div>
+  </div>
+  
+  {{#if message}}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="bi bi-check-circle me-2"></i>{{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  {{/if}}
+  
+  {{#if error}}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{error}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  {{/if}}
+  
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Categoría</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each posts}}
+            <tr>
+              <td>
+                <strong>{{this.title}}</strong>
+                <br><small class="text-muted">/blog/{{this.slug}}</small>
+              </td>
+              <td>
+                {{#if this.category}}
+                <span class="badge bg-success">{{this.category}}</span>
+                {{else}}
+                <span class="text-muted">-</span>
+                {{/if}}
+              </td>
+              <td>
+                {{#if this.published}}
+                <span class="badge bg-success">Publicado</span>
+                {{else}}
+                <span class="badge bg-warning">Borrador</span>
+                {{/if}}
+              </td>
+              <td>{{formatDate this.created_at}}</td>
+              <td>
+                <div class="btn-group btn-group-sm">
+                  <a href="/admin/blog/edit/{{this.slug}}" class="btn btn-outline-success">
+                    <i class="bi bi-pencil"></i>
+                  </a>
+                  <a href="/blog/{{this.slug}}" target="_blank" class="btn btn-outline-info">
+                    <i class="bi bi-eye"></i>
+                  </a>
+                  <button onclick="deletePost('{{this.slug}}')" class="btn btn-outline-danger">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            {{else}}
+            <tr>
+              <td colspan="5" class="text-center py-4">
+                <i class="bi bi-journal-x" style="font-size: 3rem; color: #ccc;"></i>
+                <p class="mt-2 mb-0">No hay posts. <a href="/admin/blog/new">Crear el primero</a></p>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal eliminar -->
+<div class="modal fade" id="deletePostModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Eliminar Post</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro de eliminar este post?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <form id="deletePostForm" action="/admin/blog/delete" method="POST">
+          <input type="hidden" name="slug" id="deletePostSlug">
+          <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function deletePost(slug) {
+    document.getElementById('deletePostSlug').value = slug;
+    new bootstrap.Modal(document.getElementById('deletePostModal')).show();
+  }
+</script>

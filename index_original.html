@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkmate — Estrategia Digital de Alto Impacto</title>
+<meta name="description" content="Checkmate — Agencia de estrategia digital. Desarrollo web, apps, IA, contenido y marketing de alto impacto. Cada movimiento cuenta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════
+   ██  CHECKMATE — DESIGN SYSTEM
+   ════════════════════════════════════════════ */
+:root {
+  --bg: #06060b;
+  --bg2: #0c0c14;
+  --bg3: #12121c;
+  --bg4: #181824;
+  --gold: #c9a84c;
+  --gold-l: #e6c96e;
+  --gold-d: #a08030;
+  --gold-dd: #7a6020;
+  --red: #e6836e;
+  --green: #6ee6a0;
+  --blue: #6eb3e6;
+  --purple: #c88ee6;
+  --t1: #f0ece2;
+  --t2: #9a9aad;
+  --t3: #5a5a6e;
+  --bsub: rgba(201,168,76,.10);
+  --bgold: rgba(201,168,76,.25);
+  --grad: linear-gradient(135deg, #c9a84c, #e6c96e, #c9a84c);
+  --grad2: linear-gradient(135deg, #c9a84c 0%, #e6c96e 50%, #c9a84c 100%);
+  --r: 16px;
+  --nav-h: 72px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--t1);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--gold); text-decoration: none; transition: color .25s; }
+a:hover { color: var(--gold-l); }
+
+::selection { background: rgba(201,168,76,.25); color: var(--t1); }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold-d); border-radius: 3px; }
+
+/* ════════ UTILITIES ════════ */
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.gold-text { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section-pad { padding: 120px 0; }
+
+/* ════════ CURSOR GLOW (desktop) ════════ */
+.cursor-glow {
+  position: fixed;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  transition: left .5s cubic-bezier(.23,1,.32,1), top .5s cubic-bezier(.23,1,.32,1);
+}
+
+/* ════════════════════════════════════════════
+   ██  NAVIGATION
+   ════════════════════════════════════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  display: flex; align-items: center;
+  background: rgba(6,6,11,.6);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: all .4s;
+}
+.nav.scrolled { border-bottom-color: var(--bsub); background: rgba(6,6,11,.92); }
+.nav .container { display: flex; align-items: center; justify-content: space-between; }
+
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.nav-brand-icon { font-size: 22px; color: var(--gold); }
+.nav-brand-text { font-size: 16px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--t1); }
+.nav-brand-dot { font-size: 11px; color: var(--gold-d); font-weight: 500; letter-spacing: 1px; }
+
+.nav-links { display: flex; align-items: center; gap: 6px; }
+.nav-links a {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--t2);
+  border-radius: 8px;
+  transition: all .25s;
+  letter-spacing: .3px;
+}
+.nav-links a:hover { color: var(--t1); background: rgba(201,168,76,.06); }
+.nav-links a.active { color: var(--gold-l); background: rgba(201,168,76,.08); }
+
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 22px;
+  background: var(--grad);
+  color: #0a0a0f;
+  font-size: 11.5px;
+  font-weight: 700;
+  border-radius: 50px;
+  border: none; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all .3s;
+  letter-spacing: .3px;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(201,168,76,.3); color: #0a0a0f; }
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  background: none; border: none;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--t1);
+  transition: all .3s;
+  border-radius: 1px;
+}
+.nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translateY(4.6px); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-4.6px); }
+
+/* Mobile menu */
+.nav-mobile {
+  display: none;
+  position: fixed; top: var(--nav-h); left: 0; right: 0;
+  background: rgba(6,6,11,.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--bsub);
+  padding: 20px 24px 28px;
+  flex-direction: column; gap: 4px;
+  z-index: 999;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--t2);
+  border-radius: 10px;
+  transition: all .25s;
+}
+.nav-mobile a:hover { color: var(--t1); background: rgba(201,168,76,.06); }
+
+/* ════════════════════════════════════════════
+   ██  HERO
+   ════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-canvas {
+  position: absolute; inset: 0;
+  z-index: 1;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,.04) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(201,168,76,.02) 0%, transparent 50%);
+  z-index: 2;
+}
+.hero-fade-bottom {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  z-index: 3;
+}
+.hero-content {
+  position: relative; z-index: 4;
+  padding-top: calc(var(--nav-h) + 40px);
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 18px 7px 10px;
+  border: 1px solid var(--bgold);
+  border-radius: 50px;
+  background: rgba(201,168,76,.04);
+  font-size: 11px;
+  color: var(--gold-l);
+  font-weight: 500;
+  margin-bottom: 28px;
+  letter-spacing: .5px;
+}
+.hero-badge-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: hbPulse 2.5s infinite;
+}
+@keyframes hbPulse { 0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(201,168,76,.4);} 50%{ opacity:.6; box-shadow:0 0 0 6px rgba(201,168,76,0);} }
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 7vw, 90px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.hero h1 .gold-text { display: block; }
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--t2);
+  max-width: 560px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+.hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 15px 32px;
+  background: var(--grad);
+  color: #0a0a0f;
+  font-size: 13.5px;
+  font-weight: 700;
+  border-radius: 50px;
+  border: none; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all .35s;
+  letter-spacing: .3px;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(201,168,76,.3); color: #0a0a0f; }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 15px 32px;
+  background: transparent;
+  color: var(--t1);
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 1px solid var(--bsub);
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all .35s;
+}
+.btn-secondary:hover { border-color: var(--bgold); background: rgba(201,168,76,.04); transform: translateY(-1px); color: var(--t1); }
+
+.hero-stats {
+  display: flex; gap: 48px;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--bsub);
+}
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-label {
+  font-size: 12px;
+  color: var(--t3);
+  font-weight: 500;
+  letter-spacing: .5px;
+}
+
+/* ════════════════════════════════════════════
+   ██  SERVICES
+   ════════════════════════════════════════════ */
+.section-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.section-label::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--gold-d);
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  letter-spacing: -.5px;
+}
+.section-desc {
+  font-size: 15px;
+  color: var(--t2);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.service-card {
+  background: var(--bg2);
+  border: 1px solid var(--bsub);
+  border-radius: var(--r);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all .45s cubic-bezier(.16,1,.3,1);
+  cursor: default;
+}
+.service-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad);
+  opacity: 0;
+  transition: opacity .35s;
+}
+.service-card:hover::before { opacity: 1; }
+.service-card:hover {
+  border-color: rgba(201,168,76,.2);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.3), 0 0 60px rgba(201,168,76,.04);
+}
+
+.sc-icon-wrap {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: rgba(201,168,76,.05);
+  border: 1px solid var(--bsub);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: var(--gold);
+  transition: all .35s;
+}
+.service-card:hover .sc-icon-wrap {
+  background: rgba(201,168,76,.10);
+  border-color: var(--bgold);
+  transform: scale(1.05);
+}
+
+.service-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 8px;
+  letter-spacing: -.2px;
+}
+.service-card p {
+  font-size: 13px;
+  color: var(--t2);
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+.sc-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.sc-tags span {
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(201,168,76,.04);
+  border: 1px solid rgba(201,168,76,.08);
+  color: var(--gold-l);
+  font-weight: 500;
+  letter-spacing: .3px;
+}
+
+/* Feature (full-width) */
+.service-card.featured { grid-column: 1 / -1; }
+.service-card.featured .sc-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+/* ════════════════════════════════════════════
+   ██  PROCESS
+   ════════════════════════════════════════════ */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+.process-step {
+  background: var(--bg2);
+  border: 1px solid var(--bsub);
+  padding: 36px 24px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+}
+.process-step:first-child { border-radius: var(--r) 0 0 var(--r); }
+.process-step:last-child { border-radius: 0 var(--r) var(--r) 0; }
+.process-step:hover { background: var(--bg3); border-color: rgba(201,168,76,.15); }
+
+.ps-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--gold);
+  opacity: .2;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.process-step:hover .ps-num { opacity: .5; }
+.process-step h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 6px;
+}
+.process-step p {
+  font-size: 11.5px;
+  color: var(--t3);
+  line-height: 1.55;
+}
+
+/* ════════════════════════════════════════════
+   ██  WHY / DIFFERENTIATORS
+   ════════════════════════════════════════════ */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.why-card {
+  background: var(--bg2);
+  border: 1px solid var(--bsub);
+  border-radius: var(--r);
+  padding: 28px 24px;
+  transition: all .35s;
+}
+.why-card:hover { border-color: rgba(201,168,76,.18); transform: translateY(-3px); }
+.why-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 10px;
+}
+.why-card h4 span { color: var(--gold); font-size: 18px; }
+.why-card p {
+  font-size: 13px;
+  color: var(--t2);
+  line-height: 1.65;
+}
+
+/* ════════════════════════════════════════════
+   ██  QUOTE SECTION
+   ════════════════════════════════════════════ */
+.quote-section {
+  position: relative;
+  overflow: hidden;
+}
+.quote-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(201,168,76,.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(201,168,76,.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+.quote-wrap {
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.quote-left {}
+.quote-left h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.quote-left>p {
+  font-size: 15px;
+  color: var(--t2);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.quote-features { display: flex; flex-direction: column; gap: 16px; }
+.qf-item { display: flex; align-items: flex-start; gap: 14px; }
+.qf-icon {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  background: rgba(201,168,76,.06);
+  border: 1px solid var(--bsub);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--gold);
+}
+.qf-item h4 { font-size: 14px; font-weight: 700; color: var(--t1); margin-bottom: 2px; }
+.qf-item p { font-size: 12px; color: var(--t3); line-height: 1.5; }
+
+/* Form */
+.quote-form-card {
+  background: var(--bg2);
+  border: 1px solid var(--bgold);
+  border-radius: 20px;
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.quote-form-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad);
+}
+
+.qf-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.qf-header-icon {
+  font-size: 28px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.qf-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.qf-header p {
+  font-size: 12px;
+  color: var(--t3);
+}
+
+/* Steps */
+.form-steps {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.form-step-dot {
+  width: 32px; height: 4px;
+  border-radius: 3px;
+  background: rgba(201,168,76,.12);
+  transition: all .4s;
+}
+.form-step-dot.active { background: var(--gold); width: 48px; }
+.form-step-dot.done { background: var(--gold-d); }
+
+/* Form panels */
+.form-panel { display: none; }
+.form-panel.active { display: block; animation: fpIn .4s cubic-bezier(.16,1,.3,1); }
+@keyframes fpIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: none; } }
+
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(201,168,76,.03);
+  border: 1px solid var(--bsub);
+  border-radius: 12px;
+  color: var(--t1);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: all .3s;
+  resize: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+  background: rgba(201,168,76,.06);
+  box-shadow: 0 0 0 3px rgba(201,168,76,.08);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--t3); font-size: 13px; }
+.form-group select option { background: var(--bg2); color: var(--t1); }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+/* Service select chips */
+.svc-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.svc-chip {
+  padding: 10px 16px;
+  border: 1px solid var(--bsub);
+  border-radius: 10px;
+  background: rgba(201,168,76,.02);
+  color: var(--t2);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .25s;
+  user-select: none;
+}
+.svc-chip:hover { border-color: rgba(201,168,76,.25); color: var(--t1); }
+.svc-chip.selected {
+  background: rgba(201,168,76,.12);
+  border-color: var(--gold);
+  color: var(--gold-l);
+  font-weight: 600;
+}
+
+.form-nav { display: flex; gap: 10px; margin-top: 24px; }
+.form-nav .btn-primary,
+.form-nav .btn-secondary { flex: 1; justify-content: center; font-size: 12.5px; padding: 13px 20px; }
+.form-nav .btn-secondary { font-weight: 600; }
+
+/* Budget slider */
+.budget-display {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.budget-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--gold);
+}
+.budget-currency { font-size: 16px; color: var(--gold-d); font-weight: 600; }
+.budget-note { font-size: 11px; color: var(--t3); margin-top: 2px; }
+
+input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  background: transparent;
+  margin: 16px 0;
+}
+input[type="range"]::-webkit-slider-track {
+  width: 100%; height: 4px;
+  background: linear-gradient(to right, var(--gold), var(--gold-l));
+  border-radius: 3px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px; height: 22px;
+  background: var(--grad);
+  border-radius: 50%;
+  border: 3px solid var(--bg2);
+  cursor: pointer;
+  margin-top: -9px;
+  box-shadow: 0 2px 12px rgba(201,168,76,.3);
+}
+input[type="range"]::-moz-range-track {
+  width: 100%; height: 4px;
+  background: linear-gradient(to right, var(--gold), var(--gold-l));
+  border-radius: 3px; border: none;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px; height: 22px;
+  background: var(--grad);
+  border-radius: 50%;
+  border: 3px solid var(--bg2);
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(201,168,76,.3);
+}
+
+/* Success state */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 30px 0;
+  animation: fpIn .5s cubic-bezier(.16,1,.3,1);
+}
+.form-success.active { display: block; }
+.fs-icon { font-size: 52px; margin-bottom: 14px; }
+.form-success h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-weight: 800;
+  margin-bottom: 8px;
+}
+.form-success p { font-size: 13px; color: var(--t2); line-height: 1.65; margin-bottom: 20px; }
+.fs-code {
+  display: inline-block;
+  padding: 8px 20px;
+  background: rgba(201,168,76,.06);
+  border: 1px solid var(--bgold);
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold-l);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+/* ════════════════════════════════════════════
+   ██  CTA BANNER
+   ════════════════════════════════════════════ */
+.cta-banner {
+  background: var(--bg3);
+  border: 1px solid var(--bsub);
+  border-radius: 20px;
+  padding: 56px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06), transparent 60%);
+  pointer-events: none;
+}
+.cta-banner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  margin-bottom: 12px;
+  position: relative;
+}
+.cta-banner>p {
+  font-size: 15px;
+  color: var(--t2);
+  max-width: 500px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+  position: relative;
+}
+.cta-banner .btn-actions {
+  display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+  position: relative;
+}
+
+/* ════════════════════════════════════════════
+   ██  FOOTER
+   ════════════════════════════════════════════ */
+.footer {
+  border-top: 1px solid var(--bsub);
+  padding: 60px 0 32px;
+  background: var(--bg);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+.footer-brand-icon { font-size: 28px; color: var(--gold); margin-bottom: 10px; }
+.footer-brand-name {
+  font-size: 18px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--t1); margin-bottom: 4px;
+}
+.footer-brand-url { font-size: 12px; color: var(--gold-d); font-weight: 500; margin-bottom: 14px; }
+.footer-brand-desc { font-size: 13px; color: var(--t3); line-height: 1.65; max-width: 300px; }
+
+.footer-col h4 {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 3px;
+  color: var(--gold); font-weight: 600; margin-bottom: 18px;
+}
+.footer-col a {
+  display: block; font-size: 13px; color: var(--t3);
+  padding: 5px 0; transition: color .2s;
+}
+.footer-col a:hover { color: var(--t1); }
+
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid var(--bsub);
+  font-size: 12px; color: var(--t3);
+}
+.footer-bottom a { color: var(--gold-d); }
+.footer-socials { display: flex; gap: 12px; }
+.footer-socials a {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(201,168,76,.04);
+  border: 1px solid var(--bsub);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--t3); font-size: 14px; transition: all .25s;
+}
+.footer-socials a:hover { border-color: var(--bgold); color: var(--gold); background: rgba(201,168,76,.08); }
+
+/* ════════════════════════════════════════════
+   ██  WHATSAPP FAB
+   ════════════════════════════════════════════ */
+.wa-fab {
+  position: fixed; bottom: 28px; right: 28px;
+  z-index: 900;
+  display: flex; align-items: center; gap: 10px;
+  background: #25D366;
+  color: #fff;
+  padding: 14px 22px 14px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  box-shadow: 0 6px 28px rgba(37,211,102,.35);
+  transition: all .35s;
+  border: none;
+  cursor: pointer;
+}
+.wa-fab:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(37,211,102,.5);
+  color: #fff;
+}
+.wa-fab svg { flex-shrink: 0; }
+.wa-fab-text { white-space: nowrap; }
+
+/* WA fab collapsed on scroll */
+.wa-fab.mini { padding: 14px; border-radius: 50%; }
+.wa-fab.mini .wa-fab-text { display: none; }
+
+/* ════════════════════════════════════════════
+   ██  SCROLL REVEAL
+   ════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .7s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .35s; }
+
+/* ════════════════════════════════════════════
+   ██  CUSTOM MODAL (for form success)
+   ════════════════════════════════════════════ */
+.success-modal-bg {
+  display: none; position: fixed; inset: 0;
+  z-index: 8000;
+  background: rgba(3,3,10,.88);
+  align-items: center; justify-content: center;
+  backdrop-filter: blur(6px);
+}
+.success-modal-bg.active { display: flex; }
+
+/* ════════════════════════════════════════════
+   ██  RESPONSIVE
+   ════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-card.featured { grid-column: 1 / -1; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-step:first-child { border-radius: var(--r) 0 0 0; }
+  .process-step:nth-child(2) { border-radius: 0 var(--r) 0 0; }
+  .process-step:nth-child(3) { border-radius: 0 0 0 var(--r); }
+  .process-step:last-child { border-radius: 0 0 var(--r) 0; }
+  .quote-wrap { grid-template-columns: 1fr; gap: 40px; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-cta.desktop-only { display: none; }
+  .nav-hamburger { display: flex; }
+  .container { padding: 0 16px; }
+  .section-pad { padding: 80px 0; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card.featured .sc-inner { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+  .process-step,
+  .process-step:first-child,
+  .process-step:nth-child(2),
+  .process-step:nth-child(3),
+  .process-step:last-child { border-radius: var(--r); }
+  .why-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+  .cta-banner { padding: 40px 24px; }
+  .quote-form-card { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor Glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ══════════════════════════════════════════════
+     ██  NAVIGATION
+     ══════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#hero" class="nav-brand">
+      <span class="nav-brand-icon">♛</span>
+      <span class="nav-brand-text">Checkmate</span>
+      <span class="nav-brand-dot">.company</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#diferencial">Nosotros</a>
+      <a href="#cotizar">Cotizar</a>
+    </div>
+    <a href="#cotizar" class="nav-cta desktop-only">♟ Solicitar Cotización</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="#servicios">Servicios</a>
+  <a href="#proceso">Proceso</a>
+  <a href="#diferencial">Nosotros</a>
+  <a href="#cotizar">Cotizar</a>
+  <a href="#contacto">Contacto</a>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ██  HERO
+     ══════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="hero-fade-bottom"></div>
+  <div class="container hero-content">
+    <div class="hero-badge reveal">
+      <span class="hero-badge-dot"></span>
+      Agencia de Estrategia Digital
+    </div>
+    <h1 class="reveal reveal-d1">
+      Cada Movimiento<br>
+      <span class="gold-text">Cuenta.</span>
+    </h1>
+    <p class="hero-sub reveal reveal-d2">
+      Somos la agencia que piensa tres jugadas adelante. Desarrollo tecnológico, inteligencia artificial, contenido estratégico y crecimiento acelerado para marcas que no juegan a empatar.
+    </p>
+    <div class="hero-actions reveal reveal-d3">
+      <a href="#cotizar" class="btn-primary">♟ Solicitar Cotización</a>
+      <a href="#servicios" class="btn-secondary">Explorar Servicios →</a>
+    </div>
+    <div class="hero-stats reveal reveal-d4">
+      <div>
+        <div class="hero-stat-num" data-count="150">0</div>
+        <div class="hero-stat-label">Proyectos Entregados</div>
+      </div>
+      <div>
+        <div class="hero-stat-num" data-count="98" data-suffix="%">0</div>
+        <div class="hero-stat-label">Satisfacción Cliente</div>
+      </div>
+      <div>
+        <div class="hero-stat-num" data-count="6" data-suffix="x">0</div>
+        <div class="hero-stat-label">ROI Promedio</div>
+      </div>
+      <div>
+        <div class="hero-stat-num" data-count="24" data-suffix="/7">0</div>
+        <div class="hero-stat-label">Soporte Activo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ██  SERVICES
+     ══════════════════════════════════════════════ -->
+<section class="section-pad" id="servicios">
+  <div class="container">
+    <div class="section-label reveal">Servicios</div>
+    <h2 class="section-title reveal">
+      Arsenal Estratégico<br><span class="gold-text">Completo</span>
+    </h2>
+    <p class="section-desc reveal">
+      Desde la primera línea de código hasta la última interacción social. Todo lo que necesitas bajo un mismo techo, ejecutado con precisión quirúrgica.
+    </p>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="sc-icon-wrap">♜</div>
+        <h3>Desarrollo Web</h3>
+        <p>Sitios web a medida: landing pages, corporativos, e-commerce y portales web optimizados para conversión, SEO y rendimiento.</p>
+        <div class="sc-tags"><span>UI/UX</span><span>Responsive</span><span>SEO</span><span>E-Commerce</span></div>
+      </div>
+
+      <div class="service-card reveal reveal-d1">
+        <div class="sc-icon-wrap">♜</div>
+        <h3>Apps Nativas</h3>
+        <p>Aplicaciones iOS y Android con experiencias fluidas, arquitectura offline-first y publicación en tiendas oficiales.</p>
+        <div class="sc-tags"><span>iOS</span><span>Android</span><span>React Native</span><span>Flutter</span></div>
+      </div>
+
+      <div class="service-card reveal reveal-d2">
+        <div class="sc-icon-wrap">♜</div>
+        <h3>Software SaaS</h3>
+        <p>Plataformas multi-tenant con APIs, microservicios, CI/CD y escalabilidad cloud-native desde día uno.</p>
+        <div class="sc-tags"><span>Cloud</span><span>APIs</span><span>Microservicios</span><span>DevOps</span></div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="sc-icon-wrap">♝</div>
+        <h3>Integración de IA</h3>
+        <p>Chatbots avanzados, automatización inteligente, análisis predictivo, generación de contenido con IA y dashboards de insights en tiempo real.</p>
+        <div class="sc-tags"><span>Chatbots</span><span>NLP</span><span>Predictivo</span><span>Generativa</span></div>
+      </div>
+
+      <div class="service-card reveal reveal-d1">
+        <div class="sc-icon-wrap">♕</div>
+        <h3>Contenido &amp; Redes</h3>
+        <p>Producción integral de contenido: diseño gráfico, video, copywriting, calendarios editoriales y publicación multicanal.</p>
+        <div class="sc-tags"><span>Diseño</span><span>Video</span><span>Copy</span><span>Social Media</span></div>
+      </div>
+
+      <div class="service-card reveal reveal-d2">
+        <div class="sc-icon-wrap">♞</div>
+        <h3>Tráfico &amp; Crecimiento</h3>
+        <p>SEO, Meta Ads, Google Ads, TikTok Ads, growth hacking y estrategias híbridas orgánico + pagado con optimización continua.</p>
+        <div class="sc-tags"><span>SEO</span><span>Ads</span><span>Growth</span><span>Analytics</span></div>
+      </div>
+
+      <div class="service-card featured reveal">
+        <div class="sc-inner">
+          <div>
+            <div class="sc-icon-wrap">♛</div>
+            <h3>Estrategias No Convencionales</h3>
+            <p>Guerrilla digital, neuromarketing, gamificación, dark social, growth hacking agresivo y trendjacking. Movimientos inesperados que rompen el tablero y generan resultados que el marketing tradicional no puede tocar.</p>
+          </div>
+          <div class="sc-tags" style="align-content:center; gap:8px;">
+            <span>Guerrilla Digital</span><span>Neuromarketing</span><span>Gamificación</span>
+            <span>Dark Social</span><span>Growth Hacking</span><span>Trendjacking</span>
+            <span>Loops Virales</span><span>Psicología UX</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ██  PROCESS
+     ══════════════════════════════════════════════ -->
+<section class="section-pad" id="proceso" style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-label reveal">Proceso</div>
+    <h2 class="section-title reveal">
+      Cuatro Movimientos.<br><span class="gold-text">Un Jaque Mate.</span>
+    </h2>
+    <p class="section-desc reveal">
+      Nuestra metodología está diseñada para entregar resultados desde el primer sprint, con transparencia total en cada paso.
+    </p>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="ps-num">01</div>
+        <h4>Diagnóstico</h4>
+        <p>Analizamos tu negocio, competencia, audiencia y oportunidades. Entendemos el tablero completo antes de mover una pieza.</p>
+      </div>
+      <div class="process-step reveal reveal-d1">
+        <div class="ps-num">02</div>
+        <h4>Estrategia</h4>
+        <p>Diseñamos un plan a medida con KPIs claros, roadmap de ejecución y presupuesto optimizado al centavo.</p>
+      </div>
+      <div class="process-step reveal reveal-d2">
+        <div class="ps-num">03</div>
+        <h4>Ejecución</h4>
+        <p>Sprints semanales, entregas tangibles, reportes en tiempo real. Código, diseño, contenido y campañas en marcha.</p>
+      </div>
+      <div class="process-step reveal reveal-d3">
+        <div class="ps-num">04</div>
+        <h4>Optimización</h4>
+        <p>Medimos, iteramos y escalamos. Cada dato genera una mejora. Crecimiento compuesto, mes a mes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ██  WHY CHECKMATE
+     ══════════════════════════════════════════════ -->
+<section class="section-pad" id="diferencial">
+  <div class="container">
+    <div class="section-label reveal">¿Por qué Checkmate?</div>
+    <h2 class="section-title reveal">
+      No Somos una Agencia<br><span class="gold-text">Más.</span>
+    </h2>
+    <p class="section-desc reveal">
+      Pensamos como socios estratégicos, ejecutamos como un equipo de élite y nos obsesionamos con tus resultados como si fueran nuestros.
+    </p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <h4><span>♛</span> Visión Estratégica</h4>
+        <p>No vendemos servicios sueltos. Diseñamos ecosistemas digitales completos donde cada pieza refuerza a las demás para máximo impacto.</p>
+      </div>
+      <div class="why-card reveal reveal-d1">
+        <h4><span>♜</span> Arquitectura Enterprise</h4>
+        <p>Código limpio, arquitecturas escalables, documentación profesional. Construimos para que dure y crezca con tu negocio.</p>
+      </div>
+      <div class="why-card reveal reveal-d2">
+        <h4><span>♝</span> IA como Core</h4>
+        <p>La inteligencia artificial no es un add-on: es parte integral de cada proceso. Automatización, análisis y generación potenciados por IA.</p>
+      </div>
+      <div class="why-card reveal reveal-d3">
+        <h4><span>♞</span> Velocidad de Ejecución</h4>
+        <p>Sprints cortos, decisiones rápidas, entregas semanales. No hablamos de meses para ver resultados: hablamos de días.</p>
+      </div>
+      <div class="why-card reveal">
+        <h4><span>♟</span> Transparencia Brutal</h4>
+        <p>Dashboards en tiempo real, acceso completo a métricas, reportes sin maquillaje. Ves exactamente lo que pasa y por qué.</p>
+      </div>
+      <div class="why-card reveal reveal-d1">
+        <h4><span>♕</span> Mentalidad ROI</h4>
+        <p>Cada peso invertido se trackea. Cada acción se mide. Si algo no genera retorno, pivoteamos inmediatamente. Sin ego, pura data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ██  QUOTE SECTION
+     ══════════════════════════════════════════════ -->
+<section class="section-pad quote-section" id="cotizar" style="background:var(--bg2);">
+  <div class="container">
+    <div class="quote-wrap">
+
+      <!-- Left -->
+      <div class="quote-left">
+        <div class="section-label reveal">Cotización</div>
+        <h2 class="reveal">
+          Solicita tu<br><span class="gold-text">Cotización.</span>
+        </h2>
+        <p class="reveal">
+          Cuéntanos sobre tu proyecto y te respondemos en menos de 24 horas con una propuesta personalizada. Sin compromisos, sin letra chica.
+        </p>
+        <div class="quote-features">
+          <div class="qf-item reveal">
+            <div class="qf-icon">⚡</div>
+            <div>
+              <h4>Respuesta en menos de 24hrs</h4>
+              <p>Recibe una propuesta detallada al siguiente día hábil.</p>
+            </div>
+          </div>
+          <div class="qf-item reveal reveal-d1">
+            <div class="qf-icon">♟</div>
+            <div>
+              <h4>Propuesta Personalizada</h4>
+              <p>Cada cotización es única, basada en tus objetivos reales.</p>
+            </div>
+          </div>
+          <div class="qf-item reveal reveal-d2">
+            <div class="qf-icon">🔒</div>
+            <div>
+              <h4>100% Confidencial</h4>
+              <p>Tu información está protegida. NDA disponible si lo necesitas.</p>
+            </div>
+          </div>
+          <div class="qf-item reveal reveal-d3">
+            <div class="qf-icon">💬</div>
+            <div>
+              <h4>Consulta Gratis por WhatsApp</h4>
+              <p>¿Prefieres hablar directo? Escríbenos al instante.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="quote-form-card reveal" id="quoteCard">
+        <div class="qf-header">
+          <div class="qf-header-icon">♛</div>
+          <h3 class="gold-text">Tu Proyecto</h3>
+          <p>Completa los pasos para recibir tu cotización</p>
+        </div>
+        <div class="form-steps" id="formSteps">
+          <div class="form-step-dot active" data-step="0"></div>
+          <div class="form-step-dot" data-step="1"></div>
+          <div class="form-step-dot" data-step="2"></div>
+        </div>
+
+        <form id="quoteForm" autocomplete="off">
+          <!-- STEP 1: Info -->
+          <div class="form-panel active" data-panel="0">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" id="qName" placeholder="Tu nombre completo" required>
+              </div>
+              <div class="form-group">
+                <label>Empresa</label>
+                <input type="text" id="qCompany" placeholder="Nombre de la empresa">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="qEmail" placeholder="correo@ejemplo.com" required>
+              </div>
+              <div class="form-group">
+                <label>Teléfono / WhatsApp</label>
+                <input type="tel" id="qPhone" placeholder="+52 55 1234 5678">
+              </div>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn-primary" onclick="nextStep()">Siguiente →</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Services -->
+          <div class="form-panel" data-panel="1">
+            <div class="form-group">
+              <label>¿Qué servicios te interesan?</label>
+              <div class="svc-chips" id="svcChips">
+                <div class="svc-chip" data-svc="Sitio Web">♜ Sitio Web</div>
+                <div class="svc-chip" data-svc="App Móvil">♜ App Móvil</div>
+                <div class="svc-chip" data-svc="Software SaaS">♜ Software SaaS</div>
+                <div class="svc-chip" data-svc="Integración IA">♝ Integración IA</div>
+                <div class="svc-chip" data-svc="Contenido & Redes">♕ Contenido & Redes</div>
+                <div class="svc-chip" data-svc="Tráfico & Ads">♞ Tráfico & Ads</div>
+                <div class="svc-chip" data-svc="E-Commerce">🛒 E-Commerce</div>
+                <div class="svc-chip" data-svc="Branding">✦ Branding</div>
+                <div class="svc-chip" data-svc="Estrategia 360°">♛ Estrategia 360°</div>
+                <div class="svc-chip" data-svc="Otro">⚙ Otro</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Presupuesto Estimado (MXN)</label>
+              <div class="budget-display">
+                <span class="budget-currency">$</span>
+                <span class="budget-amount" id="budgetAmount">50,000</span>
+                <span class="budget-currency">MXN</span>
+                <div class="budget-note">Ajusta el rango según tu inversión esperada</div>
+              </div>
+              <input type="range" id="budgetRange" min="5000" max="500000" step="5000" value="50000">
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn-secondary" onclick="prevStep()">← Atrás</button>
+              <button type="button" class="btn-primary" onclick="nextStep()">Siguiente →</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Details -->
+          <div class="form-panel" data-panel="2">
+            <div class="form-group">
+              <label>Cuéntanos sobre tu proyecto</label>
+              <textarea id="qDetails" rows="5" placeholder="¿Cuál es tu objetivo? ¿Qué necesitas? ¿Cuál es el contexto de tu negocio? Mientras más nos cuentes, mejor será la propuesta."></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Urgencia</label>
+                <select id="qUrgency">
+                  <option value="">Seleccionar...</option>
+                  <option value="Inmediata">Inmediata (esta semana)</option>
+                  <option value="Corto plazo">Corto plazo (1-2 semanas)</option>
+                  <option value="Mediano plazo">Mediano plazo (1 mes)</option>
+                  <option value="Sin prisa">Sin prisa (explorando)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>¿Cómo nos encontraste?</label>
+                <select id="qSource">
+                  <option value="">Seleccionar...</option>
+                  <option value="Google">Google</option>
+                  <option value="Redes sociales">Redes Sociales</option>
+                  <option value="Referido">Referido</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn-secondary" onclick="prevStep()">← Atrás</button>
+              <button type="button" class="btn-primary" id="submitBtn" onclick="submitQuote()">♟ Enviar Cotización</button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Success -->
+        <div class="form-success" id="formSuccess">
+          <div class="fs-icon">♛</div>
+          <h3 class="gold-text">¡Recibido!</h3>
+          <p>Tu solicitud ha sido enviada exitosamente. Nuestro equipo te contactará en las próximas 24 horas con una propuesta personalizada.</p>
+          <div class="fs-code" id="successCode">CM-XXXX</div>
+          <p style="font-size:11px;color:var(--t3);">Guarda tu código de referencia</p>
+          <a href="https://wa.me/5215537705731?text=Hola%20Checkmate%2C%20acabo%20de%20enviar%20una%20solicitud%20de%20cotizaci%C3%B3n%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20mi%20proyecto." class="btn-primary" target="_blank" style="margin-top:16px;display:inline-flex;text-decoration:none;">
+            💬 Hablar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ██  CTA BANNER
+     ══════════════════════════════════════════════ -->
+<section class="section-pad" id="contacto">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <h2><span class="gold-text">¿Listo para el Jaque Mate?</span></h2>
+      <p>Cada gran estrategia comienza con un primer movimiento. Hablemos hoy y transformemos tu presencia digital.</p>
+      <div class="btn-actions">
+        <a href="#cotizar" class="btn-primary">♟ Solicitar Cotización</a>
+        <a href="https://wa.me/5215537705731?text=Hola%20Checkmate%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios." class="btn-secondary" target="_blank">💬 WhatsApp Directo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ██  FOOTER
+     ══════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-icon">♛</div>
+        <div class="footer-brand-name">CHECKMATE</div>
+        <div class="footer-brand-url">checkmate.company</div>
+        <p class="footer-brand-desc">Estrategia digital de alto impacto. Cada movimiento cuenta. Transformamos negocios con soluciones digitales de clase mundial.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <a href="#servicios">Desarrollo Web</a>
+        <a href="#servicios">Apps Nativas</a>
+        <a href="#servicios">Software SaaS</a>
+        <a href="#servicios">Integración IA</a>
+        <a href="#servicios">Contenido & Redes</a>
+        <a href="#servicios">Tráfico & Ads</a>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <a href="#proceso">Proceso</a>
+        <a href="#diferencial">Nosotros</a>
+        <a href="#cotizar">Cotizar Proyecto</a>
+        <a href="https://wa.me/5215537705731" target="_blank">WhatsApp</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="https://wa.me/5215537705731" target="_blank">+52 1 55 3770 5731</a>
+        <a href="mailto:hola@checkmate.company">hola@checkmate.company</a>
+        <a href="https://checkmate.company" target="_blank">checkmate.company</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 <a href="https://checkmate.company">Checkmate</a>. Todos los derechos reservados.</span>
+      <div class="footer-socials">
+        <a href="https://wa.me/5215537705731" target="_blank" title="WhatsApp">💬</a>
+        <a href="#" title="Instagram">📸</a>
+        <a href="#" title="LinkedIn">💼</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════
+     ██  WHATSAPP FAB
+     ══════════════════════════════════════════════ -->
+<a class="wa-fab" id="waFab"
+   href="https://wa.me/5215537705731?text=Hola%20Checkmate%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20digitales."
+   target="_blank" rel="noopener">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span class="wa-fab-text">Escríbenos</span>
+</a>
+
+<!-- ══════════════════════════════════════════════
+     ██  SCRIPTS
+     ══════════════════════════════════════════════ -->
+<script>
+(function(){
+'use strict';
+
+/* ════════ CANVAS ANIMATION ════════ */
+const canvas = document.getElementById('heroCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let mouse = { x: -999, y: -999 };
+let W, H;
+
+function resizeCanvas() {
+  W = canvas.width = canvas.offsetWidth;
+  H = canvas.height = canvas.offsetHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = (Math.random() - 0.5) * 0.3;
+    this.r = Math.random() * 1.5 + 0.5;
+    this.alpha = Math.random() * 0.4 + 0.1;
+    this.baseAlpha = this.alpha;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < -50) this.x = W + 50;
+    if (this.x > W + 50) this.x = -50;
+    if (this.y < -50) this.y = H + 50;
+    if (this.y > H + 50) this.y = -50;
+
+    const dx = this.x - mouse.x;
+    const dy = this.y - mouse.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < 200) {
+      this.alpha = this.baseAlpha + (1 - dist / 200) * 0.4;
+    } else {
+      this.alpha += (this.baseAlpha - this.alpha) * 0.05;
+    }
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(201,168,76,${this.alpha})`;
+    ctx.fill();
+  }
+}
+
+function initParticles() {
+  particles = [];
+  const count = Math.min(Math.floor((W * H) / 8000), 150);
+  for (let i = 0; i < count; i++) particles.push(new Particle());
+}
+initParticles();
+window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+
+function drawConnections() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        const alpha = (1 - dist / 120) * 0.08;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(201,168,76,${alpha})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+// Chess piece symbols floating
+const chessSymbols = ['♔','♕','♖','♗','♘','♙'];
+let floatingPieces = [];
+class FloatingPiece {
+  constructor() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vy = -(Math.random() * 0.15 + 0.05);
+    this.vx = (Math.random() - 0.5) * 0.1;
+    this.symbol = chessSymbols[Math.floor(Math.random() * chessSymbols.length)];
+    this.size = Math.random() * 14 + 10;
+    this.alpha = Math.random() * 0.04 + 0.01;
+    this.rotation = Math.random() * Math.PI * 2;
+    this.rotSpeed = (Math.random() - 0.5) * 0.003;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.rotation += this.rotSpeed;
+    if (this.y < -30) { this.y = H + 30; this.x = Math.random() * W; }
+  }
+  draw() {
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rotation);
+    ctx.font = `${this.size}px serif`;
+    ctx.fillStyle = `rgba(201,168,76,${this.alpha})`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(this.symbol, 0, 0);
+    ctx.restore();
+  }
+}
+for (let i = 0; i < 12; i++) floatingPieces.push(new FloatingPiece());
+
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => { p.update(); p.draw(); });
+  drawConnections();
+  floatingPieces.forEach(fp => { fp.update(); fp.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+
+document.addEventListener('mousemove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
+});
+
+/* ════════ CURSOR GLOW ════════ */
+const glow = document.getElementById('cursorGlow');
+if (window.innerWidth > 768) {
+  document.addEventListener('mousemove', (e) => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+} else {
+  glow.style.display = 'none';
+}
+
+/* ════════ NAV SCROLL ════════ */
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const st = window.scrollY;
+  nav.classList.toggle('scrolled', st > 50);
+  lastScroll = st;
+
+  // WA fab mini
+  const wf = document.getElementById('waFab');
+  if (wf) wf.classList.toggle('mini', st > 400);
+});
+
+/* ════════ HAMBURGER ════════ */
+const hamburger = document.getElementById('navHamburger');
+const mobileMenu = document.getElementById('navMobile');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+/* ════════ SCROLL REVEAL ════════ */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      en.target.classList.add('visible');
+      revealObs.unobserve(en.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ════════ COUNTER ANIMATION ════════ */
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      const el = en.target;
+      const target = parseInt(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const duration = 2000;
+      const start = performance.now();
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(tick);
+      counterObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+/* ════════ ACTIVE NAV LINK ════════ */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const secObs = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      const id = en.target.getAttribute('id');
+      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' });
+sections.forEach(s => secObs.observe(s));
+
+/* ════════════════════════════════════════════
+   ██  QUOTE FORM LOGIC
+   ════════════════════════════════════════════ */
+let currentStep = 0;
+const totalSteps = 3;
+const stepDots = document.querySelectorAll('.form-step-dot');
+const panels = document.querySelectorAll('.form-panel');
+
+function updateSteps() {
+  stepDots.forEach((dot, i) => {
+    dot.classList.remove('active', 'done');
+    if (i === currentStep) dot.classList.add('active');
+    else if (i < currentStep) dot.classList.add('done');
+  });
+  panels.forEach((p, i) => {
+    p.classList.toggle('active', i === currentStep);
+  });
+}
+
+window.nextStep = function() {
+  // Validate current step
+  if (currentStep === 0) {
+    const name = document.getElementById('qName').value.trim();
+    const email = document.getElementById('qEmail').value.trim();
+    if (!name || name.length < 2) {
+      shakeEl(document.getElementById('qName'));
+      document.getElementById('qName').focus();
+      return;
+    }
+    if (!email || !email.includes('@')) {
+      shakeEl(document.getElementById('qEmail'));
+      document.getElementById('qEmail').focus();
+      return;
+    }
+  }
+  if (currentStep < totalSteps - 1) {
+    currentStep++;
+    updateSteps();
+  }
+};
+window.prevStep = function() {
+  if (currentStep > 0) {
+    currentStep--;
+    updateSteps();
+  }
+};
+
+function shakeEl(el) {
+  el.style.borderColor = '#e6836e';
+  el.style.animation = 'shake .4s';
+  setTimeout(() => { el.style.borderColor = ''; el.style.animation = ''; }, 500);
+}
+
+// Service chips
+document.querySelectorAll('.svc-chip').forEach(chip => {
+  chip.addEventListener('click', () => chip.classList.toggle('selected'));
+});
+
+// Budget slider
+const budgetRange = document.getElementById('budgetRange');
+const budgetAmount = document.getElementById('budgetAmount');
+budgetRange.addEventListener('input', () => {
+  const v = parseInt(budgetRange.value);
+  budgetAmount.textContent = v >= 500000 ? '500,000+' : v.toLocaleString('en-US');
+});
+
+// Submit
+window.submitQuote = function() {
+  const name = document.getElementById('qName').value.trim();
+  const email = document.getElementById('qEmail').value.trim();
+  const company = document.getElementById('qCompany').value.trim();
+  const phone = document.getElementById('qPhone').value.trim();
+  const details = document.getElementById('qDetails').value.trim();
+  const urgency = document.getElementById('qUrgency').value;
+  const source = document.getElementById('qSource').value;
+  const budget = budgetRange.value;
+
+  const selectedSvcs = [];
+  document.querySelectorAll('.svc-chip.selected').forEach(c => selectedSvcs.push(c.dataset.svc));
+
+  // Gen code
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = 'CM-';
+  for (let i = 0; i < 8; i++) code += chars[Math.floor(Math.random() * chars.length)];
+
+  // Build WhatsApp message
+  let waMsg = `🏆 *NUEVA SOLICITUD DE COTIZACIÓN*\n\n`;
+  waMsg += `♟ *Código:* ${code}\n`;
+  waMsg += `👤 *Nombre:* ${name}\n`;
+  if (company) waMsg += `🏢 *Empresa:* ${company}\n`;
+  waMsg += `📧 *Email:* ${email}\n`;
+  if (phone) waMsg += `📱 *Teléfono:* ${phone}\n`;
+  if (selectedSvcs.length) waMsg += `🎯 *Servicios:* ${selectedSvcs.join(', ')}\n`;
+  waMsg += `💰 *Presupuesto:* $${parseInt(budget).toLocaleString('en-US')} MXN\n`;
+  if (urgency) waMsg += `⚡ *Urgencia:* ${urgency}\n`;
+  if (source) waMsg += `📍 *Fuente:* ${source}\n`;
+  if (details) waMsg += `\n📋 *Detalles:*\n${details}\n`;
+  waMsg += `\n_Enviado desde checkmate.company_`;
+
+  // Show success
+  document.getElementById('quoteForm').style.display = 'none';
+  document.querySelector('.form-steps').style.display = 'none';
+  document.getElementById('successCode').textContent = code;
+  const fs = document.getElementById('formSuccess');
+  fs.classList.add('active');
+
+  // Update WhatsApp link in success
+  const waLink = fs.querySelector('a.btn-primary');
+  waLink.href = `https://wa.me/5215537705731?text=${encodeURIComponent(waMsg)}`;
+
+  // Also open WhatsApp
+  setTimeout(() => {
+    window.open(`https://wa.me/5215537705731?text=${encodeURIComponent(waMsg)}`, '_blank');
+  }, 800);
+};
+
+// Add shake keyframes
+const style = document.createElement('style');
+style.textContent = `@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}`;
+document.head.appendChild(style);
+
+/* ════════ CARD HOVER TILT ════════ */
+if (window.innerWidth > 768) {
+  document.querySelectorAll('.service-card, .why-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const rx = ((e.clientY - r.top) / r.height - 0.5) * -4;
+      const ry = ((e.clientX - r.left) / r.width - 0.5) * 4;
+      card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+})();
+</script>
+</body>
+</html>

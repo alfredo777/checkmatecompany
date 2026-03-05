@@ -1,0 +1,160 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h1><i class="bi bi-speedometer2 me-2"></i>Dashboard</h1>
+      <p class="text-muted">Bienvenido al panel de administración de GKrakenCMS</p>
+    </div>
+  </div>
+  
+  <!-- Estadísticas -->
+  <div class="row mb-4">
+    <div class="col-md-3 mb-3">
+      <div class="card bg-success text-white h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-title">Contenidos</h6>
+              <h2 class="mb-0">{{stats.contentsCount}}</h2>
+            </div>
+            <i class="bi bi-file-earmark-text" style="font-size: 2.5rem; opacity: 0.5;"></i>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <a href="/admin/contents" class="text-white">Ver todos <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+      <div class="card bg-primary text-white h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-title">Posts del Blog</h6>
+              <h2 class="mb-0">{{stats.postsCount}}</h2>
+            </div>
+            <i class="bi bi-journal-richtext" style="font-size: 2.5rem; opacity: 0.5;"></i>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <a href="/admin/blog" class="text-white">Gestionar <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+      <div class="card bg-info text-white h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-title">Imágenes</h6>
+              <h2 class="mb-0">{{stats.imagesCount}}</h2>
+            </div>
+            <i class="bi bi-images" style="font-size: 2.5rem; opacity: 0.5;"></i>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <a href="/admin/images" class="text-white">Gestionar <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+      <div class="card bg-warning text-dark h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-title">Mis Imágenes</h6>
+              <h2 class="mb-0">{{stats.myImagesCount}}</h2>
+            </div>
+            <i class="bi bi-cloud-upload" style="font-size: 2.5rem; opacity: 0.5;"></i>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <a href="/admin/images?tab=myimages" class="text-dark">Subir más <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <!-- Contenidos Recientes -->
+    <div class="col-lg-8 mb-4">
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          <i class="bi bi-file-text me-2"></i>Archivos de Contenido
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Archivo</th>
+                  <th>Tamaño</th>
+                  <th>Modificado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each contents}}
+                <tr>
+                  <td>
+                    <i class="bi bi-file-earmark-code text-success me-2"></i>
+                    {{this.name}}
+                  </td>
+                  <td>{{this.size}}</td>
+                  <td>{{this.modified}}</td>
+                  <td>
+                    <a href="/admin/contents/edit/{{this.name}}" class="btn btn-sm btn-outline-success">
+                      <i class="bi bi-pencil"></i>
+                    </a>
+                    <a href="/admin/contents/preview/{{this.name}}" class="btn btn-sm btn-outline-info" target="_blank">
+                      <i class="bi bi-eye"></i>
+                    </a>
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Acciones Rápidas -->
+    <div class="col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          <i class="bi bi-lightning me-2"></i>Acciones Rápidas
+        </div>
+        <div class="card-body">
+          <div class="d-grid gap-2">
+            <a href="/admin/contents/new" class="btn btn-outline-success">
+              <i class="bi bi-plus-circle me-2"></i>Nuevo Contenido
+            </a>
+            <a href="/admin/blog/new" class="btn btn-outline-primary">
+              <i class="bi bi-journal-plus me-2"></i>Nuevo Post
+            </a>
+            <a href="/admin/images?action=upload" class="btn btn-outline-info">
+              <i class="bi bi-cloud-upload me-2"></i>Subir Imagen
+            </a>
+            <a href="/" target="_blank" class="btn btn-outline-secondary">
+              <i class="bi bi-eye me-2"></i>Ver Sitio Web
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card mt-3">
+        <div class="card-header bg-secondary text-white">
+          <i class="bi bi-info-circle me-2"></i>Información
+        </div>
+        <div class="card-body">
+          <p><strong>Proyecto:</strong> checkmatecompany</p>
+          <p><strong>Versión:</strong> 1.0.0</p>
+          <p><strong>Node.js:</strong> <span id="nodeVersion">-</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

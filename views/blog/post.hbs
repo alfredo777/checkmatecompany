@@ -1,0 +1,77 @@
+<article class="blog-post">
+  <div class="container py-5">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
+        <li class="breadcrumb-item active">{{post.title}}</li>
+      </ol>
+    </nav>
+    
+    <!-- Header del Post -->
+    <header class="blog-post-header mb-5">
+      {{#if post.category}}
+      <a href="/blog?category={{post.category}}" class="badge bg-success mb-3">{{post.category}}</a>
+      {{/if}}
+      <h1 class="display-4 mb-3">{{post.title}}</h1>
+      <div class="blog-post-meta text-muted">
+        <span class="me-3">
+          <i class="bi bi-person me-1"></i>{{post.author}}
+        </span>
+        <span class="me-3">
+          <i class="bi bi-calendar me-1"></i>{{formatDate post.created_at}}
+        </span>
+        {{#if post.tags}}
+        <span>
+          <i class="bi bi-tags me-1"></i>
+          {{#each post.tags}}
+          <span class="badge bg-secondary me-1">{{this}}</span>
+          {{/each}}
+        </span>
+        {{/if}}
+      </div>
+    </header>
+    
+    <!-- Imagen Principal -->
+    {{#if post.image}}
+    <figure class="blog-post-image mb-5">
+      <img src="{{post.image}}" alt="{{post.title}}" class="img-fluid rounded">
+    </figure>
+    {{/if}}
+    
+    <!-- Contenido -->
+    <div class="blog-post-content">
+      {{{post.content}}}
+    </div>
+    
+    <!-- Navegación -->
+    <nav class="blog-post-nav mt-5 pt-4 border-top">
+      <div class="row">
+        {{#if prevPost}}
+        <div class="col-6">
+          <a href="/blog/{{prevPost.slug}}" class="blog-nav-link">
+            <small class="text-muted d-block"><i class="bi bi-arrow-left me-1"></i>Anterior</small>
+            <span>{{truncate prevPost.title 40}}</span>
+          </a>
+        </div>
+        {{/if}}
+        {{#if nextPost}}
+        <div class="col-6 text-end">
+          <a href="/blog/{{nextPost.slug}}" class="blog-nav-link">
+            <small class="text-muted d-block">Siguiente<i class="bi bi-arrow-right ms-1"></i></small>
+            <span>{{truncate nextPost.title 40}}</span>
+          </a>
+        </div>
+        {{/if}}
+      </div>
+    </nav>
+    
+    <!-- Volver -->
+    <div class="text-center mt-5">
+      <a href="/blog" class="btn btn-outline-success">
+        <i class="bi bi-arrow-left me-2"></i>Volver al Blog
+      </a>
+    </div>
+  </div>
+</article>

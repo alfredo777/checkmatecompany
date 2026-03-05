@@ -1,0 +1,117 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h1><i class="bi bi-images me-2"></i>Gestor de Imágenes</h1>
+    </div>
+  </div>
+  
+  {{#if message}}
+  <div class="alert alert-success alert-dismissible fade show">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  {{/if}}
+  
+  <ul class="nav nav-tabs mb-4">
+    <li class="nav-item">
+      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#myimages">
+        <i class="bi bi-cloud-upload me-1"></i>Mis Imágenes ({{myImages.length}})
+      </button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#siteimages">
+        <i class="bi bi-folder me-1"></i>Imágenes del Sitio ({{siteImages.length}})
+      </button>
+    </li>
+  </ul>
+  
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="myimages">
+      <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+          <i class="bi bi-cloud-arrow-up me-2"></i>Subir Imágenes
+        </div>
+        <div class="card-body">
+          <form action="/admin/images/upload" method="POST" enctype="multipart/form-data">
+            <div class="upload-zone" id="uploadZone">
+              <i class="bi bi-cloud-upload" style="font-size: 3rem; color: #198754;"></i>
+              <p>Arrastra imágenes aquí o haz clic para seleccionar</p>
+              <input type="file" name="images" id="imageInput" multiple accept="image/*" class="d-none">
+            </div>
+            <button type="submit" class="btn btn-success mt-3 d-none" id="uploadBtn">
+              <i class="bi bi-upload me-1"></i>Subir
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="row">
+        {{#each myImages}}
+        <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3">
+          <div class="card image-card h-100">
+            <div class="image-container">
+              <img src="/assets/images/myimages/{{this}}" alt="{{this}}" loading="lazy">
+              <div class="image-overlay">
+                <button onclick="copyPath('/assets/images/myimages/{{this}}')" class="btn btn-sm btn-light me-1">
+                  <i class="bi bi-clipboard"></i>
+                </button>
+                <button onclick="deleteImage('{{this}}', 'myimages')" class="btn btn-sm btn-danger">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body p-2">
+              <small class="text-truncate d-block">{{this}}</small>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    
+    <div class="tab-pane fade" id="siteimages">
+      <div class="row">
+        {{#each siteImages}}
+        <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3">
+          <div class="card image-card h-100">
+            <div class="image-container">
+              <img src="/assets/images/{{this}}" alt="{{this}}" loading="lazy">
+              <div class="image-overlay">
+                <button onclick="copyPath('/assets/images/{{this}}')" class="btn btn-sm btn-light">
+                  <i class="bi bi-clipboard"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body p-2">
+              <small class="text-truncate d-block">{{this}}</small>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteImageModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Eliminar Imagen</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="deleteImagePreview" src="" class="img-thumbnail mb-3" style="max-height: 200px;">
+        <p>¿Eliminar esta imagen?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <form id="deleteImageForm" action="/admin/images/delete" method="POST">
+          <input type="hidden" name="filename" id="deleteImageFilename">
+          <input type="hidden" name="folder" id="deleteImageFolder">
+          <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
