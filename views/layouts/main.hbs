@@ -1,13 +1,97 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{#if title}}{{title}}{{else}}checkmatecompany{{/if}}</title>
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- ═══════════════════════════════════════════
+       ██  SEO / META
+       ═══════════════════════════════════════════ -->
+  <title>{{#if title}}{{title}} — Checkmate{{else}}Checkmate — Estrategia Digital de Alto Impacto{{/if}}</title>
+  <meta name="description" content="{{#if metaDescription}}{{metaDescription}}{{else}}Checkmate — Agencia de estrategia digital. Desarrollo web, apps, IA, contenido y marketing de alto impacto. Cada movimiento cuenta.{{/if}}">
+  <meta name="keywords" content="{{#if metaKeywords}}{{metaKeywords}}{{else}}agencia digital, desarrollo web, apps, inteligencia artificial, marketing digital, contenido, México{{/if}}">
+  <meta name="author" content="Checkmate">
+  <meta name="robots" content="{{#if noIndex}}noindex, nofollow{{else}}index, follow{{/if}}">
+  <link rel="canonical" href="{{#if canonicalUrl}}{{canonicalUrl}}{{else}}{{currentUrl}}{{/if}}">
+  <meta name="version" content="{{appVersion}}">
+
+  <!-- ═══════════════════════════════════════════
+       ██  OPEN GRAPH / SOCIAL
+       ═══════════════════════════════════════════ -->
+  <meta property="og:type" content="{{#if ogType}}{{ogType}}{{else}}website{{/if}}">
+  <meta property="og:title" content="{{#if ogTitle}}{{ogTitle}}{{else}}{{#if title}}{{title}} — Checkmate{{else}}Checkmate — Estrategia Digital{{/if}}{{/if}}">
+  <meta property="og:description" content="{{#if ogDescription}}{{ogDescription}}{{else}}{{#if metaDescription}}{{metaDescription}}{{else}}Cada movimiento cuenta. Estrategia digital de alto impacto para marcas que no juegan a empatar.{{/if}}{{/if}}">
+  <meta property="og:url" content="{{#if canonicalUrl}}{{canonicalUrl}}{{else}}{{currentUrl}}{{/if}}">
+  <meta property="og:site_name" content="Checkmate">
+  <meta property="og:locale" content="es_MX">
+  {{#if ogImage}}
+  <meta property="og:image" content="{{ogImage}}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  {{else}}
+  <meta property="og:image" content="{{baseUrl}}{{asset '/assets/img/og-checkmate.jpg'}}">
+  {{/if}}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{#if title}}{{title}} — Checkmate{{else}}Checkmate — Estrategia Digital{{/if}}">
+  <meta name="twitter:description" content="{{#if metaDescription}}{{metaDescription}}{{else}}Cada movimiento cuenta. Estrategia digital de alto impacto.{{/if}}">
+  {{#if ogImage}}
+  <meta name="twitter:image" content="{{ogImage}}">
+  {{else}}
+  <meta name="twitter:image" content="{{baseUrl}}{{asset '/assets/img/og-checkmate.jpg'}}">
+  {{/if}}
+
+  <!-- ═══════════════════════════════════════════
+       ██  THEME / PWA
+       ═══════════════════════════════════════════ -->
+  <meta name="theme-color" content="#06060b">
+  <meta name="msapplication-TileColor" content="#06060b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Checkmate">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="{{asset '/assets/img/favicon.svg'}}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{asset '/assets/img/favicon-32.png'}}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{asset '/assets/img/favicon-16.png'}}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{asset '/assets/img/apple-touch-icon.png'}}">
+  <link rel="manifest" href="{{asset '/assets/manifest.json'}}">
+
+  <!-- ═══════════════════════════════════════════
+       ██  PRELOADS (Critical Resources)
+       ═══════════════════════════════════════════ -->
+  <!-- Fuentes críticas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {{{preload "/assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2"}}}
+  {{{preload "/assets/fonts/PlayfairDisplay-Variable.woff2" as="font" type="font/woff2"}}}
+
+  <!-- CSS crítico -->
+  {{{preload "/assets/css/main.css" as="style"}}}
+
+  <!-- JS crítico -->
+  {{{preload "/assets/js/main.js" as="script"}}}
+
+  {{#if extraPreloads}}
+  <!-- Preloads adicionales de la página -->
+  {{{extraPreloads}}}
+  {{/if}}
+
 </head>
-<body>
-  {{{body}}}
-  <script src="/assets/js/main.js"></script>
+
+<body class="{{#if bodyClass}}{{bodyClass}}{{else}}page-default{{/if}}" data-version="{{appVersion}}" data-env="{{#if isProduction}}production{{else}}development{{/if}}">
+
+
+  <!-- ═══════════════════════════════════════════
+       ██  MAIN CONTENT
+       ═══════════════════════════════════════════ -->
+  <main id="main-content">
+    {{{body}}}
+  </main>
+
+
+
 </body>
 </html>
