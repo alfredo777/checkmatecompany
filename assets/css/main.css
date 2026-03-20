@@ -242,8 +242,10 @@ a:hover { color: var(--gold-l); }
   align-items: center;
   overflow: hidden;
   background: url('/assets/images/cm5.png');
-  background-size: 100% 100%;
+  background-size: 100%;
   background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000000 !important;
 }
 .hero-canvas {
   position: absolute; inset: 0;
