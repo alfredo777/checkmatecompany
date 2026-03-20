@@ -241,6 +241,9 @@ a:hover { color: var(--gold-l); }
   display: flex;
   align-items: center;
   overflow: hidden;
+  background: url('/assets/images/cm4.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 .hero-canvas {
   position: absolute; inset: 0;
