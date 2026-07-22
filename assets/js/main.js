@@ -605,11 +605,11 @@ window.submitQuote = function() {
 
   // Update WhatsApp link in success
   const waLink = fs.querySelector('a.btn-primary');
-  waLink.href = `https://wa.me/5212222505773?text=${encodeURIComponent(waMsg)}`;
+  waLink.href = `https://wa.me/5215537705731?text=${encodeURIComponent(waMsg)}`;
 
   // Also open WhatsApp
   setTimeout(() => {
-    window.open(`https://wa.me/5212222505773?text=${encodeURIComponent(waMsg)}`, '_blank');
+    window.open(`https://wa.me/5215537705731?text=${encodeURIComponent(waMsg)}`, '_blank');
   }, 800);
 };
 
