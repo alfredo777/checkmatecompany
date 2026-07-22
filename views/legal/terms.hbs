@@ -1,35 +1,676 @@
-{{!-- Términos y Condiciones --}}
-<div class="legal-container">
-  <h1>Términos y Condiciones</h1>
-  <p class="legal-updated">Última actualización: {{formatDate now}}</p>
-  
-  <section class="legal-section">
-    <h2>1. Aceptación de los Términos</h2>
-    <p>Al acceder y utilizar este sitio web, usted acepta estar sujeto a estos términos y condiciones de uso.</p>
-  </section>
-  
-  <section class="legal-section">
-    <h2>2. Uso del Sitio</h2>
-    <p>El contenido de este sitio es para su información general y uso personal únicamente.</p>
-  </section>
-  
-  <section class="legal-section">
-    <h2>3. Propiedad Intelectual</h2>
-    <p>Este sitio web contiene material que es propiedad de o está licenciado a nosotros. Este material incluye, pero no se limita a, el diseño, disposición, apariencia y gráficos.</p>
-  </section>
-  
-  <section class="legal-section">
-    <h2>4. Limitación de Responsabilidad</h2>
-    <p>El uso de cualquier información o materiales en este sitio web es bajo su propio riesgo, por lo cual no seremos responsables.</p>
-  </section>
-  
-  <section class="legal-section">
-    <h2>5. Modificaciones</h2>
-    <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio.</p>
-  </section>
-  
-  <section class="legal-section">
-    <h2>6. Contacto</h2>
-    <p>Si tiene alguna pregunta sobre estos términos, contáctenos a través de los medios proporcionados en el sitio.</p>
-  </section>
-</div>
+{{!-- views/legal/terms.hbs --}}
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{#if (eq lang 'es')}}Términos y Condiciones{{else}}Terms and Conditions{{/if}} - Postale.art</title>
+    <meta name="description" content="{{#if (eq lang 'es')}}Términos y condiciones de uso de Postale.art{{else}}Terms and conditions for using Postale.art{{/if}}">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="/css/legal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {{> legal-header page="terms"}}
+    
+    <main class="legal-container">
+        <article class="legal-content">
+            {{#if (eq lang 'es')}}
+            {{!-- SPANISH VERSION --}}
+            <header class="legal-title-section">
+                <h1>Términos y Condiciones de Postale.art</h1>
+                <p class="last-updated">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    Última actualización: {{lastUpdated}}
+                </p>
+            </header>
+
+            {{!-- Section 1 --}}
+            <section class="legal-section" id="informacion-general">
+                <h2>
+                    <span class="section-number">1</span>
+                    Información General
+                </h2>
+                <p>Bienvenido a <strong>Postale.art</strong> (en adelante, "el Sitio", "nosotros" o "nuestro"). Al acceder y utilizar este sitio web, usted acepta cumplir y estar sujeto a los siguientes Términos y Condiciones. Si no está de acuerdo con alguna parte de estos términos, le rogamos que no utilice nuestros servicios.</p>
+                <p><strong>Postale.art</strong> es una plataforma que ofrece servicios de creación de tarjetas de felicitación y videos personalizados generados mediante inteligencia artificial.</p>
+            </section>
+
+            {{!-- Section 2 --}}
+            <section class="legal-section" id="descripcion-servicios">
+                <h2>
+                    <span class="section-number">2</span>
+                    Descripción de los Servicios
+                </h2>
+                <p>Postale.art ofrece los siguientes productos digitales:</p>
+                
+                <div class="product-cards">
+                    <div class="product-card">
+                        <div class="product-icon">🖼️</div>
+                        <h3>Memory Card</h3>
+                        <p class="product-subtitle">Tarjeta de Recuerdo</p>
+                        <p class="product-price">$1 USD</p>
+                        <ul class="product-features">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                1 foto
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                Más de 30 estilos artísticos
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                Descarga en HD
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                Entrega instantánea
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="product-card featured">
+                        <span class="popular-badge">POPULAR</span>
+                        <div class="product-icon">🎬</div>
+                        <h3>Cinematic Video Memory</h3>
+                        <p class="product-subtitle">Video Cinematográfico</p>
+                        <p class="product-price">$5 USD</p>
+                        <ul class="product-features">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                Hasta 10 fotos
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                Transiciones cinematográficas
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                Música emocional incluida
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                Video HD de 30-60 segundos
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 3 --}}
+            <section class="legal-section" id="proceso-compra">
+                <h2>
+                    <span class="section-number">3</span>
+                    Proceso de Compra y Aceptación de Términos
+                </h2>
+                
+                <h3>3.1 Aceptación de Términos</h3>
+                <div class="alert-box warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <strong>IMPORTANTE:</strong> Al hacer clic en el botón "Comprar", "Crear Card", "Crear Video" o cualquier botón de pago, usted declara que:
+                        <ul>
+                            <li>Ha leído, comprendido y acepta en su totalidad estos Términos y Condiciones</li>
+                            <li>Ha leído y acepta nuestro <a href="/{{lang}}/privacy">Aviso de Privacidad</a></li>
+                            <li>Es mayor de 18 años o cuenta con autorización de un tutor legal</li>
+                            <li>Acepta la política de no reembolso establecida en este documento</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>3.2 Proceso de Compra</h3>
+                <div class="steps-list">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <span>Suba su(s) foto(s)</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <span>Escriba su mensaje personalizado</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span>Seleccione un estilo artístico</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <span>Complete el pago</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">5</span>
+                        <span>Reciba su producto digital de forma instantánea</span>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 4 - No Refund Policy --}}
+            <section class="legal-section" id="politica-reembolso">
+                <h2>
+                    <span class="section-number">4</span>
+                    Política de No Reembolso
+                </h2>
+
+                <h3>4.1 Productos Digitales No Reembolsables</h3>
+                <div class="alert-box danger">
+                    <div class="alert-icon">🚫</div>
+                    <div class="alert-content">
+                        <strong>TODAS LAS COMPRAS REALIZADAS EN POSTALE.ART SON FINALES Y NO ESTÁN SUJETAS A REEMBOLSO.</strong>
+                    </div>
+                </div>
+                
+                <p>Debido a la naturaleza digital e instantánea de nuestros productos, <strong>no ofrecemos reembolsos, devoluciones, cambios ni cancelaciones</strong> una vez que se ha procesado el pago, independientemente de:</p>
+                
+                <ul class="no-refund-list">
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Insatisfacción con el resultado generado
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Errores en la información proporcionada por el usuario (fotos, mensajes, selección de estilo)
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Cambio de opinión después de la compra
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Problemas técnicos en el dispositivo del usuario para visualizar o descargar el producto
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Cualquier otra circunstancia
+                    </li>
+                </ul>
+
+                <h3>4.2 Excepciones</h3>
+                <p>Únicamente consideraremos casos excepcionales cuando:</p>
+                <ul>
+                    <li>Exista un fallo técnico comprobable de nuestra plataforma que impida la entrega del producto</li>
+                    <li>El pago se haya duplicado por error del sistema</li>
+                </ul>
+                <p>En estos casos, el usuario deberá contactarnos dentro de las <strong>24 horas</strong> posteriores a la compra con evidencia del problema.</p>
+
+                <h3>4.3 Reconocimiento</h3>
+                <div class="acknowledgment-box">
+                    <p>Al realizar una compra, usted reconoce y acepta que:</p>
+                    <ul>
+                        <li>Comprende que está adquiriendo un producto digital generado por inteligencia artificial</li>
+                        <li>Los resultados pueden variar según la calidad de las imágenes proporcionadas</li>
+                        <li>No tiene derecho a reembolso bajo ninguna circunstancia ordinaria</li>
+                        <li>Ha revisado los ejemplos disponibles en el sitio antes de comprar</li>
+                    </ul>
+                </div>
+            </section>
+
+            {{!-- Section 5 --}}
+            <section class="legal-section" id="propiedad-intelectual">
+                <h2>
+                    <span class="section-number">5</span>
+                    Propiedad Intelectual
+                </h2>
+
+                <h3>5.1 Contenido del Usuario</h3>
+                <ul>
+                    <li>Usted conserva todos los derechos sobre las fotografías que suba a nuestra plataforma</li>
+                    <li>Al subir contenido, usted garantiza que tiene los derechos necesarios sobre dicho material</li>
+                    <li>Usted otorga a Postale.art una licencia temporal y limitada para procesar sus imágenes únicamente con el fin de generar su producto</li>
+                </ul>
+
+                <h3>5.2 Productos Generados</h3>
+                <ul>
+                    <li>Una vez completada la compra, usted obtiene una licencia de uso personal e ilimitado sobre el producto digital generado</li>
+                    <li>Puede compartir, imprimir y distribuir su tarjeta o video para uso personal y no comercial</li>
+                </ul>
+
+                <h3>5.3 Propiedad de Postale.art</h3>
+                <ul>
+                    <li>El diseño, código, marca, logotipos y tecnología de Postale.art son propiedad exclusiva nuestra</li>
+                    <li>Queda prohibida la reproducción, distribución o modificación de cualquier elemento del sitio sin autorización expresa</li>
+                </ul>
+            </section>
+
+            {{!-- Section 6 --}}
+            <section class="legal-section" id="uso-aceptable">
+                <h2>
+                    <span class="section-number">6</span>
+                    Uso Aceptable
+                </h2>
+                <p>El usuario se compromete a:</p>
+                <ul>
+                    <li>No subir contenido ilegal, ofensivo, difamatorio o que viole derechos de terceros</li>
+                    <li>No subir imágenes de menores sin consentimiento de sus tutores legales</li>
+                    <li>No utilizar el servicio para fines fraudulentos o ilegales</li>
+                    <li>No intentar vulnerar la seguridad del sitio</li>
+                </ul>
+                <p>Nos reservamos el derecho de rechazar o eliminar cualquier contenido que viole estas normas, sin derecho a reembolso.</p>
+            </section>
+
+            {{!-- Section 7 --}}
+            <section class="legal-section" id="limitacion-responsabilidad">
+                <h2>
+                    <span class="section-number">7</span>
+                    Limitación de Responsabilidad
+                </h2>
+                <p>Postale.art no será responsable por:</p>
+                <ul>
+                    <li>Daños indirectos, incidentales o consecuentes derivados del uso del servicio</li>
+                    <li>La calidad del resultado cuando las imágenes proporcionadas sean de baja resolución</li>
+                    <li>Interrupciones temporales del servicio por mantenimiento o causas de fuerza mayor</li>
+                    <li>El uso que terceros hagan de los productos generados una vez compartidos por el usuario</li>
+                </ul>
+            </section>
+
+            {{!-- Section 8 --}}
+            <section class="legal-section" id="modificaciones">
+                <h2>
+                    <span class="section-number">8</span>
+                    Modificaciones
+                </h2>
+                <p>Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio. El uso continuado del servicio constituye la aceptación de los términos modificados.</p>
+            </section>
+
+            {{!-- Section 9 --}}
+            <section class="legal-section" id="legislacion">
+                <h2>
+                    <span class="section-number">9</span>
+                    Legislación Aplicable
+                </h2>
+                <p>Estos Términos y Condiciones se regirán e interpretarán de acuerdo con las leyes aplicables. Cualquier disputa será sometida a los tribunales competentes.</p>
+            </section>
+
+            {{!-- Section 10 --}}
+            <section class="legal-section" id="contacto">
+                <h2>
+                    <span class="section-number">10</span>
+                    Contacto
+                </h2>
+                <p>Para cualquier consulta relacionada con estos Términos y Condiciones, puede contactarnos a través de nuestro sitio web.</p>
+                <div class="contact-box">
+                    <a href="https://postale.art" class="contact-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                        postale.art
+                    </a>
+                </div>
+            </section>
+
+            {{else}}
+            {{!-- ENGLISH VERSION --}}
+            <header class="legal-title-section">
+                <h1>Terms and Conditions of Postale.art</h1>
+                <p class="last-updated">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    Last updated: {{lastUpdated}}
+                </p>
+            </header>
+
+            {{!-- Section 1 --}}
+            <section class="legal-section" id="general-information">
+                <h2>
+                    <span class="section-number">1</span>
+                    General Information
+                </h2>
+                <p>Welcome to <strong>Postale.art</strong> (hereinafter, "the Site", "we" or "our"). By accessing and using this website, you agree to comply with and be bound by the following Terms and Conditions. If you do not agree with any part of these terms, please do not use our services.</p>
+                <p><strong>Postale.art</strong> is a platform that offers greeting card and personalized video creation services generated through artificial intelligence.</p>
+            </section>
+
+            {{!-- Section 2 --}}
+            <section class="legal-section" id="service-description">
+                <h2>
+                    <span class="section-number">2</span>
+                    Service Description
+                </h2>
+                <p>Postale.art offers the following digital products:</p>
+                
+                <div class="product-cards">
+                    <div class="product-card">
+                        <div class="product-icon">🖼️</div>
+                        <h3>Memory Card</h3>
+                        <p class="product-subtitle">Digital Greeting Card</p>
+                        <p class="product-price">$1 USD</p>
+                        <ul class="product-features">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                1 photo
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                30+ artistic styles
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                HD download
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                Instant delivery
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="product-card featured">
+                        <span class="popular-badge">POPULAR</span>
+                        <div class="product-icon">🎬</div>
+                        <h3>Cinematic Video Memory</h3>
+                        <p class="product-subtitle">Emotional Video Tribute</p>
+                        <p class="product-price">$5 USD</p>
+                        <ul class="product-features">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                Up to 10 photos
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                Cinematic transitions
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                Emotional music included
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                                30-60 second HD video
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 3 --}}
+            <section class="legal-section" id="purchase-process">
+                <h2>
+                    <span class="section-number">3</span>
+                    Purchase Process and Terms Acceptance
+                </h2>
+                
+                <h3>3.1 Terms Acceptance</h3>
+                <div class="alert-box warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <strong>IMPORTANT:</strong> By clicking the "Buy", "Create Card", "Create Video" or any payment button, you declare that:
+                        <ul>
+                            <li>You have read, understood and fully accept these Terms and Conditions</li>
+                            <li>You have read and accept our <a href="/{{lang}}/privacy">Privacy Notice</a></li>
+                            <li>You are over 18 years old or have authorization from a legal guardian</li>
+                            <li>You accept the no-refund policy established in this document</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>3.2 Purchase Process</h3>
+                <div class="steps-list">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <span>Upload your photo(s)</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <span>Write your personalized message</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span>Select an artistic style</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <span>Complete payment</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">5</span>
+                        <span>Receive your digital product instantly</span>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 4 - No Refund Policy --}}
+            <section class="legal-section" id="refund-policy">
+                <h2>
+                    <span class="section-number">4</span>
+                    No Refund Policy
+                </h2>
+
+                <h3>4.1 Non-Refundable Digital Products</h3>
+                <div class="alert-box danger">
+                    <div class="alert-icon">🚫</div>
+                    <div class="alert-content">
+                        <strong>ALL PURCHASES MADE ON POSTALE.ART ARE FINAL AND NOT SUBJECT TO REFUND.</strong>
+                    </div>
+                </div>
+                
+                <p>Due to the digital and instant nature of our products, <strong>we do not offer refunds, returns, exchanges or cancellations</strong> once payment has been processed, regardless of:</p>
+                
+                <ul class="no-refund-list">
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Dissatisfaction with the generated result
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Errors in information provided by the user (photos, messages, style selection)
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Change of mind after purchase
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Technical issues on the user's device to view or download the product
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Any other circumstance
+                    </li>
+                </ul>
+
+                <h3>4.2 Exceptions</h3>
+                <p>We will only consider exceptional cases when:</p>
+                <ul>
+                    <li>There is a verifiable technical failure of our platform that prevents product delivery</li>
+                    <li>Payment was duplicated due to a system error</li>
+                </ul>
+                <p>In these cases, the user must contact us within <strong>24 hours</strong> of purchase with evidence of the problem.</p>
+
+                <h3>4.3 Acknowledgment</h3>
+                <div class="acknowledgment-box">
+                    <p>By making a purchase, you acknowledge and accept that:</p>
+                    <ul>
+                        <li>You understand that you are purchasing a digital product generated by artificial intelligence</li>
+                        <li>Results may vary depending on the quality of images provided</li>
+                        <li>You have no right to a refund under any ordinary circumstance</li>
+                        <li>You have reviewed the examples available on the site before purchasing</li>
+                    </ul>
+                </div>
+            </section>
+
+            {{!-- Section 5 --}}
+            <section class="legal-section" id="intellectual-property">
+                <h2>
+                    <span class="section-number">5</span>
+                    Intellectual Property
+                </h2>
+
+                <h3>5.1 User Content</h3>
+                <ul>
+                    <li>You retain all rights to the photographs you upload to our platform</li>
+                    <li>By uploading content, you guarantee that you have the necessary rights to said material</li>
+                    <li>You grant Postale.art a temporary and limited license to process your images solely for the purpose of generating your product</li>
+                </ul>
+
+                <h3>5.2 Generated Products</h3>
+                <ul>
+                    <li>Once the purchase is completed, you obtain a personal and unlimited use license for the generated digital product</li>
+                    <li>You may share, print and distribute your card or video for personal and non-commercial use</li>
+                </ul>
+
+                <h3>5.3 Postale.art Property</h3>
+                <ul>
+                    <li>The design, code, brand, logos and technology of Postale.art are our exclusive property</li>
+                    <li>Reproduction, distribution or modification of any element of the site without express authorization is prohibited</li>
+                </ul>
+            </section>
+
+            {{!-- Section 6 --}}
+            <section class="legal-section" id="acceptable-use">
+                <h2>
+                    <span class="section-number">6</span>
+                    Acceptable Use
+                </h2>
+                <p>The user agrees to:</p>
+                <ul>
+                    <li>Not upload illegal, offensive, defamatory content or content that violates third-party rights</li>
+                    <li>Not upload images of minors without consent from their legal guardians</li>
+                    <li>Not use the service for fraudulent or illegal purposes</li>
+                    <li>Not attempt to breach the site's security</li>
+                </ul>
+                <p>We reserve the right to reject or remove any content that violates these rules, without right to refund.</p>
+            </section>
+
+            {{!-- Section 7 --}}
+            <section class="legal-section" id="liability-limitation">
+                <h2>
+                    <span class="section-number">7</span>
+                    Limitation of Liability
+                </h2>
+                <p>Postale.art shall not be liable for:</p>
+                <ul>
+                    <li>Indirect, incidental or consequential damages arising from the use of the service</li>
+                    <li>The quality of the result when the images provided are low resolution</li>
+                    <li>Temporary service interruptions due to maintenance or force majeure</li>
+                    <li>The use that third parties make of the generated products once shared by the user</li>
+                </ul>
+            </section>
+
+            {{!-- Section 8 --}}
+            <section class="legal-section" id="modifications">
+                <h2>
+                    <span class="section-number">8</span>
+                    Modifications
+                </h2>
+                <p>We reserve the right to modify these Terms and Conditions at any time. Changes will take effect immediately after their publication on the site. Continued use of the service constitutes acceptance of the modified terms.</p>
+            </section>
+
+            {{!-- Section 9 --}}
+            <section class="legal-section" id="applicable-law">
+                <h2>
+                    <span class="section-number">9</span>
+                    Applicable Law
+                </h2>
+                <p>These Terms and Conditions shall be governed and interpreted in accordance with applicable laws. Any dispute shall be submitted to the competent courts.</p>
+            </section>
+
+            {{!-- Section 10 --}}
+            <section class="legal-section" id="contact">
+                <h2>
+                    <span class="section-number">10</span>
+                    Contact
+                </h2>
+                <p>For any inquiries related to these Terms and Conditions, you may contact us through our website.</p>
+                <div class="contact-box">
+                    <a href="https://postale.art" class="contact-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                        postale.art
+                    </a>
+                </div>
+            </section>
+            {{/if}}
+
+            {{!-- Table of Contents Navigation --}}
+            <nav class="legal-toc">
+                <h4>{{#if (eq lang 'es')}}Índice{{else}}Table of Contents{{/if}}</h4>
+                {{#if (eq lang 'es')}}
+                <ul>
+                    <li><a href="#informacion-general">1. Información General</a></li>
+                    <li><a href="#descripcion-servicios">2. Descripción de los Servicios</a></li>
+                    <li><a href="#proceso-compra">3. Proceso de Compra</a></li>
+                    <li><a href="#politica-reembolso">4. Política de No Reembolso</a></li>
+                    <li><a href="#propiedad-intelectual">5. Propiedad Intelectual</a></li>
+                    <li><a href="#uso-aceptable">6. Uso Aceptable</a></li>
+                    <li><a href="#limitacion-responsabilidad">7. Limitación de Responsabilidad</a></li>
+                    <li><a href="#modificaciones">8. Modificaciones</a></li>
+                    <li><a href="#legislacion">9. Legislación Aplicable</a></li>
+                    <li><a href="#contacto">10. Contacto</a></li>
+                </ul>
+                {{else}}
+                <ul>
+                    <li><a href="#general-information">1. General Information</a></li>
+                    <li><a href="#service-description">2. Service Description</a></li>
+                    <li><a href="#purchase-process">3. Purchase Process</a></li>
+                    <li><a href="#refund-policy">4. No Refund Policy</a></li>
+                    <li><a href="#intellectual-property">5. Intellectual Property</a></li>
+                    <li><a href="#acceptable-use">6. Acceptable Use</a></li>
+                    <li><a href="#liability-limitation">7. Limitation of Liability</a></li>
+                    <li><a href="#modifications">8. Modifications</a></li>
+                    <li><a href="#applicable-law">9. Applicable Law</a></li>
+                    <li><a href="#contact">10. Contact</a></li>
+                </ul>
+                {{/if}}
+            </nav>
+        </article>
+    </main>
+</body>
+</html>

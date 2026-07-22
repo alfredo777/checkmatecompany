@@ -1,41 +1,674 @@
-{{!-- Política de Privacidad --}}
-<div class="legal-container">
-  <h1>Política de Privacidad</h1>
-  <p class="legal-updated">Última actualización: {{formatDate now}}</p>
-  
-  <section class="legal-section">
-    <h2>1. Información que Recopilamos</h2>
-    <p>Podemos recopilar información personal que usted nos proporciona directamente, como nombre, correo electrónico y otros datos de contacto.</p>
-  </section>
-  
-  <section class="legal-section">
-    <h2>2. Uso de la Información</h2>
-    <p>Utilizamos la información recopilada para:</p>
-    <ul>
-      <li>Proporcionar y mantener nuestros servicios</li>
-      <li>Notificarle sobre cambios en nuestro servicio</li>
-      <li>Proporcionar soporte al cliente</li>
-      <li>Recopilar análisis para mejorar nuestro servicio</li>
-    </ul>
-  </section>
-  
-  <section class="legal-section">
-    <h2>3. Protección de Datos</h2>
-    <p>Implementamos medidas de seguridad apropiadas para proteger contra el acceso no autorizado, alteración, divulgación o destrucción de su información personal.</p>
-  </section>
-  
-  <section class="legal-section">
-    <h2>4. Cookies</h2>
-    <p>Utilizamos cookies y tecnologías similares para rastrear la actividad en nuestro servicio y mantener cierta información.</p>
-  </section>
-  
-  <section class="legal-section">
-    <h2>5. Sus Derechos</h2>
-    <p>Usted tiene derecho a acceder, actualizar o eliminar la información que tenemos sobre usted.</p>
-  </section>
-  
-  <section class="legal-section">
-    <h2>6. Contacto</h2>
-    <p>Si tiene preguntas sobre esta política de privacidad, contáctenos a través de los medios proporcionados en el sitio.</p>
-  </section>
-</div>
+{{!-- views/legal/privacy.hbs --}}
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{#if (eq lang 'es')}}Aviso de Privacidad{{else}}Privacy Notice{{/if}} - Postale.art</title>
+    <meta name="description" content="{{#if (eq lang 'es')}}Aviso de privacidad de Postale.art{{else}}Privacy notice for Postale.art{{/if}}">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="/css/legal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {{> legal-header page="privacy"}}
+    
+    <main class="legal-container">
+        <article class="legal-content">
+            {{#if (eq lang 'es')}}
+            {{!-- SPANISH VERSION --}}
+            <header class="legal-title-section">
+                <h1>Aviso de Privacidad de Postale.art</h1>
+                <p class="last-updated">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    Última actualización: {{lastUpdated}}
+                </p>
+            </header>
+
+            {{!-- Section 1 --}}
+            <section class="legal-section" id="responsable">
+                <h2>
+                    <span class="section-number">1</span>
+                    Responsable del Tratamiento
+                </h2>
+                <p><strong>Postale.art</strong> es responsable del tratamiento de los datos personales que usted nos proporcione a través de nuestro sitio web <a href="https://postale.art">https://postale.art/</a></p>
+            </section>
+
+            {{!-- Section 2 --}}
+            <section class="legal-section" id="compromiso">
+                <h2>
+                    <span class="section-number">2</span>
+                    Compromiso con su Privacidad
+                </h2>
+                <div class="alert-box success">
+                    <div class="alert-icon">🔒</div>
+                    <div class="alert-content">
+                        <strong>EN POSTALE.ART, SU PRIVACIDAD ES NUESTRA PRIORIDAD.</strong>
+                        <p><strong>NO CONSERVAMOS, ALMACENAMOS NI RETENEMOS NINGÚN DATO PERSONAL DE NUESTROS CLIENTES.</strong></p>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 3 --}}
+            <section class="legal-section" id="datos-no-recopilamos">
+                <h2>
+                    <span class="section-number">3</span>
+                    Datos que NO Recopilamos ni Almacenamos
+                </h2>
+
+                <h3>3.1 Información Financiera</h3>
+                <p>Postale.art <strong>NO recopila, almacena, procesa ni tiene acceso a:</strong></p>
+                
+                <div class="no-collect-grid">
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Números de tarjetas de crédito o débito</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Fechas de vencimiento de tarjetas</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Códigos de seguridad (CVV/CVC)</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Extractos bancarios</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Información de cuentas bancarias</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Historial de transacciones bancarias</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Ningún otro dato financiero o bancario</span>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Todos los pagos son procesados de forma segura por proveedores de pago externos certificados (como Stripe, PayPal u otros procesadores de pago autorizados). Nosotros nunca vemos ni tenemos acceso a su información financiera.</strong></p>
+                </div>
+
+                <h3>3.2 Datos Personales</h3>
+                <p><strong>NO almacenamos de forma permanente:</strong></p>
+                <div class="no-collect-grid">
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Nombres completos</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Direcciones de correo electrónico</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Direcciones físicas</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Números de teléfono</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Documentos de identidad</span>
+                    </div>
+                </div>
+
+                <h3>3.3 Fotografías e Imágenes</h3>
+                <ul>
+                    <li>Las fotografías que usted sube son procesadas <strong>únicamente</strong> para generar su producto</li>
+                    <li><strong>Las imágenes son eliminadas automáticamente de nuestros servidores</strong> una vez completado el proceso de generación</li>
+                    <li><strong>NO conservamos copias</strong> de sus fotografías</li>
+                    <li><strong>NO utilizamos sus imágenes</strong> para entrenar modelos de IA ni para ningún otro propósito</li>
+                </ul>
+            </section>
+
+            {{!-- Section 4 --}}
+            <section class="legal-section" id="procesamiento-temporal">
+                <h2>
+                    <span class="section-number">4</span>
+                    Procesamiento Temporal de Datos
+                </h2>
+
+                <h3>4.1 Durante la Transacción</h3>
+                <p>Durante el proceso de creación de su tarjeta o video, procesamos temporalmente:</p>
+                <ul>
+                    <li>Las fotografías que usted sube (eliminadas inmediatamente después de generar el producto)</li>
+                    <li>El mensaje personalizado que usted escribe (no se almacena después de la generación)</li>
+                </ul>
+
+                <h3>4.2 Eliminación Automática</h3>
+                <div class="alert-box info">
+                    <div class="alert-icon">🗑️</div>
+                    <div class="alert-content">
+                        <strong>Todos los datos temporales son eliminados automáticamente de nuestros sistemas inmediatamente después de que usted descargue o reciba su producto digital.</strong>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 5 --}}
+            <section class="legal-section" id="procesadores-pago">
+                <h2>
+                    <span class="section-number">5</span>
+                    Procesadores de Pago Externos
+                </h2>
+                <p>Los pagos en Postale.art son gestionados por procesadores de pago externos certificados que cumplen con los estándares de seguridad <strong>PCI-DSS</strong> (Payment Card Industry Data Security Standard).</p>
+                
+                <p>Estos proveedores:</p>
+                <ul>
+                    <li>Procesan su pago de forma segura</li>
+                    <li>Tienen sus propias políticas de privacidad</li>
+                    <li>No comparten su información financiera con nosotros</li>
+                </ul>
+                
+                <div class="payment-badges">
+                    <div class="badge">
+                        <span class="badge-icon">🔒</span>
+                        <span>SSL Encrypted</span>
+                    </div>
+                    <div class="badge">
+                        <span class="badge-icon">💳</span>
+                        <span>PCI-DSS Compliant</span>
+                    </div>
+                </div>
+                
+                <p>Le recomendamos revisar las políticas de privacidad del procesador de pago utilizado.</p>
+            </section>
+
+            {{!-- Section 6 --}}
+            <section class="legal-section" id="cookies">
+                <h2>
+                    <span class="section-number">6</span>
+                    Cookies y Tecnologías de Seguimiento
+                </h2>
+
+                <h3>6.1 Cookies Esenciales</h3>
+                <p>Utilizamos únicamente cookies técnicas esenciales para:</p>
+                <ul>
+                    <li>Mantener la funcionalidad del sitio</li>
+                    <li>Recordar su preferencia de idioma (EN/ES)</li>
+                    <li>Garantizar la seguridad de la sesión durante el proceso de compra</li>
+                </ul>
+
+                <h3>6.2 Sin Cookies de Rastreo</h3>
+                <p><strong>NO utilizamos:</strong></p>
+                <div class="no-collect-grid">
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Cookies de publicidad</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Cookies de seguimiento de terceros</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Píxeles de rastreo</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Herramientas de análisis que recopilen datos personales identificables</span>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 7 --}}
+            <section class="legal-section" id="seguridad">
+                <h2>
+                    <span class="section-number">7</span>
+                    Seguridad
+                </h2>
+                <p>Implementamos medidas de seguridad técnicas y organizativas para proteger cualquier dato durante su procesamiento temporal, incluyendo:</p>
+                
+                <div class="security-features">
+                    <div class="security-item">
+                        <div class="security-icon">🔐</div>
+                        <div class="security-text">
+                            <strong>Conexiones cifradas</strong>
+                            <span>mediante HTTPS/SSL</span>
+                        </div>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-icon">🖥️</div>
+                        <div class="security-text">
+                            <strong>Servidores seguros</strong>
+                            <span>infraestructura protegida</span>
+                        </div>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-icon">🗑️</div>
+                        <div class="security-text">
+                            <strong>Eliminación automática</strong>
+                            <span>de datos temporales</span>
+                        </div>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-icon">🔑</div>
+                        <div class="security-text">
+                            <strong>Acceso restringido</strong>
+                            <span>a sistemas</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 8 --}}
+            <section class="legal-section" id="derechos">
+                <h2>
+                    <span class="section-number">8</span>
+                    Derechos del Usuario
+                </h2>
+                <p>Dado que <strong>no almacenamos datos personales</strong>, no existe información que podamos:</p>
+                <ul>
+                    <li>Mostrarle</li>
+                    <li>Rectificar</li>
+                    <li>Eliminar</li>
+                    <li>Transferir</li>
+                </ul>
+                <div class="info-box">
+                    <p>Sus datos simplemente <strong>no existen en nuestros sistemas</strong> después de completar su transacción.</p>
+                </div>
+            </section>
+
+            {{!-- Section 9 --}}
+            <section class="legal-section" id="menores">
+                <h2>
+                    <span class="section-number">9</span>
+                    Menores de Edad
+                </h2>
+                <p>Nuestros servicios están dirigidos a personas mayores de 18 años. Si usted es menor de edad, debe contar con la autorización de un padre o tutor legal para utilizar nuestros servicios.</p>
+            </section>
+
+            {{!-- Section 10 --}}
+            <section class="legal-section" id="cambios">
+                <h2>
+                    <span class="section-number">10</span>
+                    Cambios en el Aviso de Privacidad
+                </h2>
+                <p>Nos reservamos el derecho de actualizar este Aviso de Privacidad. Cualquier cambio será publicado en esta página con la fecha de actualización correspondiente.</p>
+            </section>
+
+            {{!-- Section 11 --}}
+            <section class="legal-section" id="contacto-privacy">
+                <h2>
+                    <span class="section-number">11</span>
+                    Contacto
+                </h2>
+                <p>Si tiene preguntas sobre este Aviso de Privacidad o sobre nuestras prácticas de privacidad, puede contactarnos a través de nuestro sitio web.</p>
+                <div class="contact-box">
+                    <a href="https://postale.art" class="contact-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                        postale.art
+                    </a>
+                </div>
+            </section>
+
+            {{!-- Section 12 --}}
+            <section class="legal-section" id="consentimiento">
+                <h2>
+                    <span class="section-number">12</span>
+                    Consentimiento
+                </h2>
+                <p>Al utilizar Postale.art, usted confirma que ha leído y comprendido este Aviso de Privacidad y consiente el procesamiento temporal de sus datos según lo descrito anteriormente.</p>
+            </section>
+
+            {{else}}
+            {{!-- ENGLISH VERSION --}}
+            <header class="legal-title-section">
+                <h1>Privacy Notice of Postale.art</h1>
+                <p class="last-updated">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    Last updated: {{lastUpdated}}
+                </p>
+            </header>
+
+            {{!-- Section 1 --}}
+            <section class="legal-section" id="controller">
+                <h2>
+                    <span class="section-number">1</span>
+                    Data Controller
+                </h2>
+                <p><strong>Postale.art</strong> is responsible for the processing of personal data that you provide to us through our website <a href="https://postale.art">https://postale.art/</a></p>
+            </section>
+
+            {{!-- Section 2 --}}
+            <section class="legal-section" id="commitment">
+                <h2>
+                    <span class="section-number">2</span>
+                    Commitment to Your Privacy
+                </h2>
+                <div class="alert-box success">
+                    <div class="alert-icon">🔒</div>
+                    <div class="alert-content">
+                        <strong>AT POSTALE.ART, YOUR PRIVACY IS OUR PRIORITY.</strong>
+                        <p><strong>WE DO NOT RETAIN, STORE OR KEEP ANY PERSONAL DATA FROM OUR CUSTOMERS.</strong></p>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 3 --}}
+            <section class="legal-section" id="data-not-collected">
+                <h2>
+                    <span class="section-number">3</span>
+                    Data We Do NOT Collect or Store
+                </h2>
+
+                <h3>3.1 Financial Information</h3>
+                <p>Postale.art <strong>does NOT collect, store, process or have access to:</strong></p>
+                
+                <div class="no-collect-grid">
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Credit or debit card numbers</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Card expiration dates</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Security codes (CVV/CVC)</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Bank statements</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Bank account information</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Banking transaction history</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Any other financial or banking data</span>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>All payments are securely processed by certified external payment providers (such as Stripe, PayPal or other authorized payment processors). We never see or have access to your financial information.</strong></p>
+                </div>
+
+                <h3>3.2 Personal Data</h3>
+                <p><strong>We do NOT permanently store:</strong></p>
+                <div class="no-collect-grid">
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Full names</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Email addresses</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Physical addresses</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Phone numbers</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Identity documents</span>
+                    </div>
+                </div>
+
+                <h3>3.3 Photographs and Images</h3>
+                <ul>
+                    <li>The photographs you upload are processed <strong>only</strong> to generate your product</li>
+                    <li><strong>Images are automatically deleted from our servers</strong> once the generation process is complete</li>
+                    <li><strong>We do NOT keep copies</strong> of your photographs</li>
+                    <li><strong>We do NOT use your images</strong> to train AI models or for any other purpose</li>
+                </ul>
+            </section>
+
+            {{!-- Section 4 --}}
+            <section class="legal-section" id="temporary-processing">
+                <h2>
+                    <span class="section-number">4</span>
+                    Temporary Data Processing
+                </h2>
+
+                <h3>4.1 During the Transaction</h3>
+                <p>During the process of creating your card or video, we temporarily process:</p>
+                <ul>
+                    <li>The photographs you upload (deleted immediately after generating the product)</li>
+                    <li>The personalized message you write (not stored after generation)</li>
+                </ul>
+
+                <h3>4.2 Automatic Deletion</h3>
+                <div class="alert-box info">
+                    <div class="alert-icon">🗑️</div>
+                    <div class="alert-content">
+                        <strong>All temporary data is automatically deleted from our systems immediately after you download or receive your digital product.</strong>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 5 --}}
+            <section class="legal-section" id="payment-processors">
+                <h2>
+                    <span class="section-number">5</span>
+                    External Payment Processors
+                </h2>
+                <p>Payments on Postale.art are managed by certified external payment processors that comply with <strong>PCI-DSS</strong> (Payment Card Industry Data Security Standard) security standards.</p>
+                
+                <p>These providers:</p>
+                <ul>
+                    <li>Process your payment securely</li>
+                    <li>Have their own privacy policies</li>
+                    <li>Do not share your financial information with us</li>
+                </ul>
+                
+                <div class="payment-badges">
+                    <div class="badge">
+                        <span class="badge-icon">🔒</span>
+                        <span>SSL Encrypted</span>
+                    </div>
+                    <div class="badge">
+                        <span class="badge-icon">💳</span>
+                        <span>PCI-DSS Compliant</span>
+                    </div>
+                </div>
+                
+                <p>We recommend reviewing the privacy policies of the payment processor used.</p>
+            </section>
+
+            {{!-- Section 6 --}}
+            <section class="legal-section" id="cookies-en">
+                <h2>
+                    <span class="section-number">6</span>
+                    Cookies and Tracking Technologies
+                </h2>
+
+                <h3>6.1 Essential Cookies</h3>
+                <p>We only use essential technical cookies to:</p>
+                <ul>
+                    <li>Maintain site functionality</li>
+                    <li>Remember your language preference (EN/ES)</li>
+                    <li>Ensure session security during the purchase process</li>
+                </ul>
+
+                <h3>6.2 No Tracking Cookies</h3>
+                <p><strong>We do NOT use:</strong></p>
+                <div class="no-collect-grid">
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Advertising cookies</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Third-party tracking cookies</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Tracking pixels</span>
+                    </div>
+                    <div class="no-collect-item">
+                        <span class="no-icon">❌</span>
+                        <span>Analytics tools that collect identifiable personal data</span>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 7 --}}
+            <section class="legal-section" id="security-en">
+                <h2>
+                    <span class="section-number">7</span>
+                    Security
+                </h2>
+                <p>We implement technical and organizational security measures to protect any data during its temporary processing, including:</p>
+                
+                <div class="security-features">
+                    <div class="security-item">
+                        <div class="security-icon">🔐</div>
+                        <div class="security-text">
+                            <strong>Encrypted connections</strong>
+                            <span>via HTTPS/SSL</span>
+                        </div>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-icon">🖥️</div>
+                        <div class="security-text">
+                            <strong>Secure servers</strong>
+                            <span>protected infrastructure</span>
+                        </div>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-icon">🗑️</div>
+                        <div class="security-text">
+                            <strong>Automatic deletion</strong>
+                            <span>of temporary data</span>
+                        </div>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-icon">🔑</div>
+                        <div class="security-text">
+                            <strong>Restricted access</strong>
+                            <span>to systems</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Section 8 --}}
+            <section class="legal-section" id="user-rights">
+                <h2>
+                    <span class="section-number">8</span>
+                    User Rights
+                </h2>
+                <p>Since <strong>we do not store personal data</strong>, there is no information that we can:</p>
+                <ul>
+                    <li>Show you</li>
+                    <li>Rectify</li>
+                    <li>Delete</li>
+                    <li>Transfer</li>
+                </ul>
+                <div class="info-box">
+                    <p>Your data simply <strong>does not exist in our systems</strong> after completing your transaction.</p>
+                </div>
+            </section>
+
+            {{!-- Section 9 --}}
+            <section class="legal-section" id="minors">
+                <h2>
+                    <span class="section-number">9</span>
+                    Minors
+                </h2>
+                <p>Our services are intended for people over 18 years of age. If you are a minor, you must have authorization from a parent or legal guardian to use our services.</p>
+            </section>
+
+            {{!-- Section 10 --}}
+            <section class="legal-section" id="changes-en">
+                <h2>
+                    <span class="section-number">10</span>
+                    Changes to the Privacy Notice
+                </h2>
+                <p>We reserve the right to update this Privacy Notice. Any changes will be posted on this page with the corresponding update date.</p>
+            </section>
+
+            {{!-- Section 11 --}}
+            <section class="legal-section" id="contact-privacy-en">
+                <h2>
+                    <span class="section-number">11</span>
+                    Contact
+                </h2>
+                <p>If you have questions about this Privacy Notice or about our privacy practices, you may contact us through our website.</p>
+                <div class="contact-box">
+                    <a href="https://postale.art" class="contact-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                        postale.art
+                    </a>
+                </div>
+            </section>
+
+            {{!-- Section 12 --}}
+            <section class="legal-section" id="consent-en">
+                <h2>
+                    <span class="section-number">12</span>
+                    Consent
+                </h2>
+                <p>By using Postale.art, you confirm that you have read and understood this Privacy Notice and consent to the temporary processing of your data as described above.</p>
+            </section>
+            {{/if}}
+
+            {{!-- Table of Contents Navigation --}}
+            <nav class="legal-toc">
+                <h4>{{#if (eq lang 'es')}}Índice{{else}}Table of Contents{{/if}}</h4>
+                {{#if (eq lang 'es')}}
+                <ul>
+                    <li><a href="#responsable">1. Responsable del Tratamiento</a></li>
+                    <li><a href="#compromiso">2. Compromiso con su Privacidad</a></li>
+                    <li><a href="#datos-no-recopilamos">3. Datos que NO Recopilamos</a></li>
+                    <li><a href="#procesamiento-temporal">4. Procesamiento Temporal</a></li>
+                    <li><a href="#procesadores-pago">5. Procesadores de Pago</a></li>
+                    <li><a href="#cookies">6. Cookies</a></li>
+                    <li><a href="#seguridad">7. Seguridad</a></li>
+                    <li><a href="#derechos">8. Derechos del Usuario</a></li>
+                    <li><a href="#menores">9. Menores de Edad</a></li>
+                    <li><a href="#cambios">10. Cambios</a></li>
+                    <li><a href="#contacto-privacy">11. Contacto</a></li>
+                    <li><a href="#consentimiento">12. Consentimiento</a></li>
+                </ul>
+                {{else}}
+                <ul>
+                    <li><a href="#controller">1. Data Controller</a></li>
+                    <li><a href="#commitment">2. Privacy Commitment</a></li>
+                    <li><a href="#data-not-collected">3. Data We Don't Collect</a></li>
+                    <li><a href="#temporary-processing">4. Temporary Processing</a></li>
+                    <li><a href="#payment-processors">5. Payment Processors</a></li>
+                    <li><a href="#cookies-en">6. Cookies</a></li>
+                    <li><a href="#security-en">7. Security</a></li>
+                    <li><a href="#user-rights">8. User Rights</a></li>
+                    <li><a href="#minors">9. Minors</a></li>
+                    <li><a href="#changes-en">10. Changes</a></li>
+                    <li><a href="#contact-privacy-en">11. Contact</a></li>
+                    <li><a href="#consent-en">12. Consent</a></li>
+                </ul>
+                {{/if}}
+            </nav>
+        </article>
+    </main>
+</body>
+</html>
