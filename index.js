@@ -538,6 +538,16 @@ function loadViewData(req) {
   return data;
 }
 
+// Páginas del equipo
+app.get('/team/:member', (req, res) => {
+  const viewPath = path.join(__dirname, 'views', 'team', req.params.member + '.hbs');
+  if (fs.existsSync(viewPath)) {
+    res.render('team/' + req.params.member, { ...loadViewData(req), layout: 'main' });
+  } else {
+    res.status(404).render('index', { ...loadViewData(req), error: 'Página no encontrada' });
+  }
+});
+
 // Página principal
 app.get('/', (req, res) => res.render('index', loadViewData(req)));
 
