@@ -158,10 +158,8 @@ a:hover { color: var(--gold-l); }
 .nav.scrolled { border-bottom-color: var(--bsub); background: rgba(6,6,11,.92); }
 .nav .container { display: flex; align-items: center; justify-content: space-between; }
 
-.nav-brand { display: flex; align-items: center; gap: 10px; }
-.nav-brand-icon { font-size: 22px; color: var(--gold); }
-.nav-brand-text { font-size: 16px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--t1); }
-.nav-brand-dot { font-size: 11px; color: var(--gold-d); font-weight: 500; letter-spacing: 1px; }
+.nav-brand { display: flex; align-items: center; }
+.nav-logo { height: 40px; width: auto; }
 
 .nav-links { display: flex; align-items: center; gap: 6px; }
 .nav-links a {
@@ -418,15 +416,17 @@ a:hover { color: var(--gold-l); }
 }
 
 .sc-icon-wrap {
-  width: 48px; height: 48px;
+  width: 56px; height: 56px;
   border-radius: 14px;
   background: rgba(201,168,76,.05);
   border: 1px solid var(--bsub);
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 20px;
-  font-size: 22px;
-  color: var(--gold);
   transition: all .35s;
+}
+.sc-icon-wrap img {
+  width: 34px; height: 34px;
+  object-fit: contain;
 }
 .service-card:hover .sc-icon-wrap {
   background: rgba(201,168,76,.10);
@@ -488,6 +488,15 @@ a:hover { color: var(--gold-l); }
 .process-step:last-child { border-radius: 0 var(--r) var(--r) 0; }
 .process-step:hover { background: var(--bg3); border-color: rgba(201,168,76,.15); }
 
+.ps-icon {
+  width: 48px; height: 48px;
+  object-fit: contain;
+  margin: 0 auto 12px;
+  display: block;
+  opacity: .6;
+  transition: opacity .35s;
+}
+.process-step:hover .ps-icon { opacity: 1; }
 .ps-num {
   font-family: 'Playfair Display', serif;
   font-size: 40px;
@@ -526,14 +535,23 @@ a:hover { color: var(--gold-l); }
   transition: all .35s;
 }
 .why-card:hover { border-color: rgba(201,168,76,.18); transform: translateY(-3px); }
+.why-icon {
+  width: 50px; height: 50px;
+  margin-bottom: 14px;
+  opacity: .7;
+  transition: opacity .35s;
+}
+.why-icon img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.why-card:hover .why-icon { opacity: 1; }
 .why-card h4 {
   font-size: 15px;
   font-weight: 700;
   color: var(--t1);
   margin-bottom: 6px;
-  display: flex; align-items: center; gap: 10px;
 }
-.why-card h4 span { color: var(--gold); font-size: 18px; }
 .why-card p {
   font-size: 13px;
   color: var(--t2);
