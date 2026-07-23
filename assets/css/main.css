@@ -267,7 +267,7 @@ a:hover { color: var(--gold-l); }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 7px 18px 7px 10px;
-  border: 1px solid var(--bgold);
+  border: 0px solid var(--bgold);
   border-radius: 50px;
   background: rgba(201,168,76,.04);
   font-size: 11px;
