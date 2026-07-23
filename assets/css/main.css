@@ -1177,6 +1177,7 @@ input[type="range"]::-moz-range-thumb {
   color: var(--t2);
   line-height: 1.75;
   margin-bottom: 14px;
+  text-align: justify;
 }
 .tp-timeline {
   position: relative;
