@@ -518,7 +518,7 @@ app.get('/privacy', (req, res) => res.render('legal/privacy', { layout: 'legal',
 // Cargar datos para vistas
 function loadViewData(req) {
   const data = {
-    title: 'CheckMate Company | Agencia de Estrategia Digital',
+    title: 'Productos de ajedrez locales y digitales',
     year: new Date().getFullYear(),
     appVersion: APP_VERSION,
     isProduction,
@@ -538,18 +538,38 @@ function loadViewData(req) {
   return data;
 }
 
-// Páginas del equipo
-app.get('/team/:member', (req, res) => {
-  const viewPath = path.join(__dirname, 'views', 'team', req.params.member + '.hbs');
-  if (fs.existsSync(viewPath)) {
-    res.render('team/' + req.params.member, { ...loadViewData(req), layout: 'main' });
-  } else {
-    res.status(404).render('index', { ...loadViewData(req), error: 'Página no encontrada' });
-  }
-});
+// ── Páginas en español (/) e inglés (/en) ─────────────────
+// Textos de interfaz: contents/i18n.json · contenido: catalogo(-en).json y partida-opera(-en).json
+function renderPage(view, lang, req, res) {
+  const data = loadViewData(req);
+  const t = (data.i18n && data.i18n[lang]) || {};
+  const en = lang === 'en';
+  const base = en ? '/en' : '';
+  const path = view === 'index' ? '' : '/' + view;
+  const origin = `${req.protocol}://${req.get('host')}`;
+  const isProduct = view === 'hyper-clock';
+  res.render(view, {
+    ...data,
+    lang, t, base,
+    page: view,
+    homeHref: base || '/',
+    catalogo: en && data.catalogo_en ? data.catalogo_en : data.catalogo,
+    partida_opera: en && data.partida_opera_en ? data.partida_opera_en : data.partida_opera,
+    altHref: (en ? '' : '/en') + path || '/',
+    urlEs: origin + (path || '/'),
+    urlEn: origin + '/en' + path,
+    canonicalUrl: origin + ((base + path) || '/'),
+    title: isProduct ? t.productMetaTitle : t.metaTitle,
+    metaDescription: isProduct ? t.productMetaDescription : t.metaDescription,
+    ogLocale: t.ogLocale,
+    ogImage: isProduct ? `${origin}/assets/video/hyper-clock-opera-${lang}-poster.webp` : undefined
+  });
+}
 
-// Página principal
-app.get('/', (req, res) => res.render('index', loadViewData(req)));
+app.get('/', (req, res) => renderPage('index', 'es', req, res));
+app.get('/hyper-clock', (req, res) => renderPage('hyper-clock', 'es', req, res));
+app.get('/en', (req, res) => renderPage('index', 'en', req, res));
+app.get('/en/hyper-clock', (req, res) => renderPage('hyper-clock', 'en', req, res));
 
 // Otras páginas dinámicas
 app.get('/:page', (req, res) => {

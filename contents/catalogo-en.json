@@ -1,0 +1,79 @@
+{
+  "marca": {
+    "nombre": "CheckMate Company",
+    "lema": "Every move counts.",
+    "descripcion": "We make chess products that help you play better over a real board. The first one is Hyper Clock: the chess clock that records your game.",
+    "whatsapp": "5215537705731",
+    "whatsappVisible": "+52 1 55 3770 5731",
+    "email": "hola@checkmate.company",
+    "web": "checkmate.company",
+    "instagram": "",
+    "facebook": ""
+  },
+  "apps": [
+    {
+      "nombre": "Hyper Clock",
+      "tipo": "Chess clock",
+      "lema": "Like a pro in your phone",
+      "imagen": "/assets/images/app-hyper-clock.png",
+      "descripcion": "The chess clock on your phone. Pick the time control, tap your half when you finish your move, and at the end the game is saved with every move and how long it took.",
+      "funciones": [
+        "Bullet, blitz, rapid and classical",
+        "Increment per move",
+        "Checkmate, resignation or draw",
+        "Game history",
+        "Player names and Elo",
+        "7 languages"
+      ],
+      "estado": "Coming soon to the App Store and Google Play",
+      "ios": "",
+      "android": "",
+      "video": "/assets/video/hyper-clock-opera-en.mp4",
+      "videoPoster": "/assets/video/hyper-clock-opera-en-poster.webp",
+      "capturas": [
+        {
+          "src": "/assets/images/hyper-clock/en/jugada-blancas.webp",
+          "alt": "Clock running: White notes Bb5+ by tapping bishop, b, 5 and check",
+          "titulo": "Note every move",
+          "texto": "When you tap the clock, your half shows piece, file and rank. Three taps and the move is recorded.",
+          "portada": true
+        },
+        {
+          "src": "/assets/images/hyper-clock/en/jugada-negras.webp",
+          "alt": "Black's half, turned around for the player across the table, noting Nd7",
+          "titulo": "Each player on their side",
+          "texto": "The top half is flipped for your opponent: both of you take notes without turning the phone.",
+          "portada": true
+        },
+        {
+          "src": "/assets/images/hyper-clock/en/resultado.webp",
+          "alt": "End of the game: Morphy wins by checkmate in 33 moves",
+          "titulo": "Checkmate in one tap",
+          "texto": "Mark # and the clock stops; confirm the mate and the game is saved with date and time.",
+          "portada": true
+        },
+        {
+          "src": "/assets/images/hyper-clock/en/jugadas.webp",
+          "alt": "List of moves in the game with the time each one took",
+          "titulo": "Your whole game",
+          "texto": "Every move with its time, ready to review or share as PGN.",
+          "portada": true
+        },
+        {
+          "src": "/assets/images/hyper-clock/en/partida.webp",
+          "alt": "Game summary: result, time control and average time per player",
+          "titulo": "How it was played",
+          "texto": "Result, time control, average time per player and each one's longest move.",
+          "portada": false
+        },
+        {
+          "src": "/assets/images/hyper-clock/en/inicio.webp",
+          "alt": "Home screen: player names, optional Elo and time controls",
+          "titulo": "Ready in seconds",
+          "texto": "Names, optional Elo and the time control: bullet, blitz, rapid or classical.",
+          "portada": false
+        }
+      ]
+    }
+  ]
+}

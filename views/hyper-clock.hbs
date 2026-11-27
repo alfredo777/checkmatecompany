@@ -1,0 +1,104 @@
+{{!-- Página de producto: Hyper Clock (textos: contents/i18n.json · contenido: catalogo(-en).json y partida-opera(-en).json) --}}
+{{> icons}}
+{{> chess-defs}}
+{{> site-nav}}
+
+<main id="contenido">
+{{#each catalogo.apps}}{{#if (eq this.nombre "Hyper Clock")}}
+
+<!-- ══════════════════════════════════════════════
+     ██  CABECERA DEL PRODUCTO
+     ══════════════════════════════════════════════ -->
+<section class="product-hero">
+  <div class="container product-hero-grid">
+    <img class="product-icon reveal" src="{{this.imagen}}" alt="{{@root.t.iconAlt}} {{this.nombre}}" width="200" height="200">
+    <div class="product-hero-copy">
+      <p class="app-type reveal">{{this.tipo}}</p>
+      <h1 class="reveal">{{this.nombre}}</h1>
+      <p class="product-tagline reveal" lang="en">{{this.lema}}</p>
+      <p class="product-lead reveal">{{this.descripcion}}</p>
+      <div class="hero-actions reveal">
+        {{#if this.ios}}<a href="{{this.ios}}" class="btn-primary" target="_blank" rel="noopener">{{@root.t.downloadIos}}</a>{{/if}}
+        {{#if this.android}}<a href="{{this.android}}" class="btn-primary" target="_blank" rel="noopener">{{@root.t.downloadAndroid}}</a>{{/if}}
+        {{#unless this.ios}}{{#unless this.android}}
+        <a href="{{waLink @root.catalogo.marca.whatsapp @root.t.notifyMsg this.nombre '.'}}" class="btn-primary" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg> {{@root.t.notify}}</a>
+        {{/unless}}{{/unless}}
+        <a href="#video" class="btn-secondary"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> {{@root.t.watchVideo}}</a>
+      </div>
+      {{#unless this.ios}}{{#unless this.android}}<p class="app-status reveal">{{this.estado}}</p>{{/unless}}{{/unless}}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ██  VIDEO
+     ══════════════════════════════════════════════ -->
+<section class="product-video" id="video" aria-label="{{@root.t.watchVideo}}">
+  <div class="container">
+    <div class="video-frame reveal">
+      <video src="{{asset this.video}}" poster="{{asset this.videoPoster}}" controls playsinline preload="metadata" width="1920" height="1080"
+             aria-label="{{@root.t.productVideoAria}}"></video>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ██  CAPTURAS
+     ══════════════════════════════════════════════ -->
+<section class="section-pad" id="capturas" aria-labelledby="capturas-title">
+  <div class="container">
+    <h2 class="section-title reveal" id="capturas-title">{{@root.t.shotsTitleA}} <span class="gold-text">{{@root.t.shotsTitleB}}</span></h2>
+    <p class="section-desc reveal">{{@root.t.shotsDesc}}</p>
+    <ul class="gallery" role="list">
+      {{#each this.capturas}}
+      <li class="gallery-item reveal">
+        <figure>
+          <img src="{{asset this.src}}" alt="{{this.alt}}" width="720" height="1513" loading="lazy" decoding="async">
+          <figcaption>
+            <h3>{{this.titulo}}</h3>
+            <p>{{this.texto}}</p>
+          </figcaption>
+        </figure>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ██  FUNCIONES
+     ══════════════════════════════════════════════ -->
+<section class="section-pad section-alt" id="funciones" aria-labelledby="funciones-title">
+  <div class="container">
+    <h2 class="section-title reveal" id="funciones-title">{{@root.t.featTitleA}} <span class="gold-text">{{@root.t.featTitleB}}</span></h2>
+    <ul class="feature-list reveal" role="list">
+      {{#each this.funciones}}<li>{{this}}</li>{{/each}}
+    </ul>
+  </div>
+</section>
+
+{{/if}}{{/each}}
+
+{{> partida}}
+
+<!-- ══════════════════════════════════════════════
+     ██  CIERRE
+     ══════════════════════════════════════════════ -->
+<section class="section-pad" id="lanzamiento" aria-labelledby="lanzamiento-title">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <h2 id="lanzamiento-title">{{t.ctaTitleA}} <span class="gold-text">{{t.ctaTitleB}}</span></h2>
+      <p>{{t.ctaText}}</p>
+      <div class="btn-actions">
+        <a href="{{waLink catalogo.marca.whatsapp t.notifyMsg 'Hyper Clock.'}}" class="btn-primary" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg> {{t.ctaBtn}}</a>
+        <a href="{{homeHref}}#contacto" class="btn-secondary">{{t.ctaOther}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+{{> site-footer}}
+{{> wa-fab}}
+
+<script src="{{asset '/assets/js/board.js'}}" defer></script>

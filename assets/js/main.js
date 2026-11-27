@@ -283,144 +283,6 @@ if (document.readyState === 'loading') {
 (function(){
 'use strict';
 
-/* ════════ CANVAS ANIMATION ════════ */
-const canvas = document.getElementById('heroCanvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-let mouse = { x: -999, y: -999 };
-let W, H;
-
-function resizeCanvas() {
-  W = canvas.width = canvas.offsetWidth;
-  H = canvas.height = canvas.offsetHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-class Particle {
-  constructor() { this.reset(); }
-  reset() {
-    this.x = Math.random() * W;
-    this.y = Math.random() * H;
-    this.vx = (Math.random() - 0.5) * 0.3;
-    this.vy = (Math.random() - 0.5) * 0.3;
-    this.r = Math.random() * 1.5 + 0.5;
-    this.alpha = Math.random() * 0.4 + 0.1;
-    this.baseAlpha = this.alpha;
-  }
-  update() {
-    this.x += this.vx;
-    this.y += this.vy;
-    if (this.x < -50) this.x = W + 50;
-    if (this.x > W + 50) this.x = -50;
-    if (this.y < -50) this.y = H + 50;
-    if (this.y > H + 50) this.y = -50;
-
-    const dx = this.x - mouse.x;
-    const dy = this.y - mouse.y;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    if (dist < 200) {
-      this.alpha = this.baseAlpha + (1 - dist / 200) * 0.4;
-    } else {
-      this.alpha += (this.baseAlpha - this.alpha) * 0.05;
-    }
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(201,168,76,${this.alpha})`;
-    ctx.fill();
-  }
-}
-
-function initParticles() {
-  particles = [];
-  const count = Math.min(Math.floor((W * H) / 8000), 150);
-  for (let i = 0; i < count; i++) particles.push(new Particle());
-}
-initParticles();
-window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
-
-function drawConnections() {
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 120) {
-        const alpha = (1 - dist / 120) * 0.08;
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(201,168,76,${alpha})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-    }
-  }
-}
-
-// Chess piece symbols floating
-const chessSymbols = ['♔','♕','♖','♗','♘','♙'];
-let floatingPieces = [];
-class FloatingPiece {
-  constructor() {
-    this.x = Math.random() * W;
-    this.y = Math.random() * H;
-    this.vy = -(Math.random() * 0.15 + 0.05);
-    this.vx = (Math.random() - 0.5) * 0.1;
-    this.symbol = chessSymbols[Math.floor(Math.random() * chessSymbols.length)];
-    this.size = Math.random() * 14 + 10;
-    this.alpha = Math.random() * 0.04 + 0.01;
-    this.rotation = Math.random() * Math.PI * 2;
-    this.rotSpeed = (Math.random() - 0.5) * 0.003;
-  }
-  update() {
-    this.x += this.vx;
-    this.y += this.vy;
-    this.rotation += this.rotSpeed;
-    if (this.y < -30) { this.y = H + 30; this.x = Math.random() * W; }
-  }
-  draw() {
-    ctx.save();
-    ctx.translate(this.x, this.y);
-    ctx.rotate(this.rotation);
-    ctx.font = `${this.size}px serif`;
-    ctx.fillStyle = `rgba(201,168,76,${this.alpha})`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(this.symbol, 0, 0);
-    ctx.restore();
-  }
-}
-for (let i = 0; i < 12; i++) floatingPieces.push(new FloatingPiece());
-
-function animate() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach(p => { p.update(); p.draw(); });
-  drawConnections();
-  floatingPieces.forEach(fp => { fp.update(); fp.draw(); });
-  requestAnimationFrame(animate);
-}
-animate();
-
-document.addEventListener('mousemove', (e) => {
-  const rect = canvas.getBoundingClientRect();
-  mouse.x = e.clientX - rect.left;
-  mouse.y = e.clientY - rect.top;
-});
-
-/* ════════ CURSOR GLOW ════════ */
-const glow = document.getElementById('cursorGlow');
-if (window.innerWidth > 768) {
-  document.addEventListener('mousemove', (e) => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
-} else {
-  glow.style.display = 'none';
-}
-
 /* ════════ NAV SCROLL ════════ */
 const nav = document.getElementById('nav');
 let lastScroll = 0;
@@ -437,18 +299,25 @@ window.addEventListener('scroll', () => {
 /* ════════ HAMBURGER ════════ */
 const hamburger = document.getElementById('navHamburger');
 const mobileMenu = document.getElementById('navMobile');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  mobileMenu.classList.toggle('open');
-});
-mobileMenu.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('open');
-  });
+const EN = document.documentElement.lang === 'en';
+const TXT = EN
+  ? { open: 'Open menu', close: 'Close menu', nameError: 'Write your name so we know who to reply to.', hello: (n) => `Hi CheckMate, I'm ${n}.`, interest: "I'm interested in" }
+  : { open: 'Abrir menú', close: 'Cerrar menú', nameError: 'Escribe tu nombre para que sepamos a quién responder.', hello: (n) => `Hola CheckMate, soy ${n}.`, interest: 'Me interesa' };
+function setMenu(open) {
+  hamburger.classList.toggle('active', open);
+  mobileMenu.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', String(open));
+  hamburger.setAttribute('aria-label', open ? TXT.close : TXT.open);
+}
+hamburger.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('open')) { setMenu(false); hamburger.focus(); }
 });
 
 /* ════════ SCROLL REVEAL ════════ */
+document.documentElement.classList.add('js-reveal');
+document.querySelectorAll('.hero .reveal').forEach((el, i) => el.style.setProperty('--i', i));
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(en => {
     if (en.isIntersecting) {
@@ -459,31 +328,6 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-/* ════════ COUNTER ANIMATION ════════ */
-const counterObs = new IntersectionObserver((entries) => {
-  entries.forEach(en => {
-    if (en.isIntersecting) {
-      const el = en.target;
-      const target = parseInt(el.dataset.count);
-      const suffix = el.dataset.suffix || '';
-      const duration = 2000;
-      const start = performance.now();
-      function tick(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(eased * target);
-        el.textContent = current + suffix;
-        if (progress < 1) requestAnimationFrame(tick);
-        else el.textContent = target + suffix;
-      }
-      requestAnimationFrame(tick);
-      counterObs.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
-
 /* ════════ ACTIVE NAV LINK ════════ */
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
@@ -491,147 +335,60 @@ const secObs = new IntersectionObserver((entries) => {
   entries.forEach(en => {
     if (en.isIntersecting) {
       const id = en.target.getAttribute('id');
-      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+      navLinks.forEach(l => { if (l.hash) l.classList.toggle('active', l.hash === '#' + id && l.pathname === location.pathname); });
     }
   });
 }, { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' });
 sections.forEach(s => secObs.observe(s));
 
 /* ════════════════════════════════════════════
-   ██  QUOTE FORM LOGIC
+   ██  FORMULARIO DE CONTACTO → WHATSAPP
    ════════════════════════════════════════════ */
-let currentStep = 0;
-const totalSteps = 3;
-const stepDots = document.querySelectorAll('.form-step-dot');
-const panels = document.querySelectorAll('.form-panel');
-
-function updateSteps() {
-  stepDots.forEach((dot, i) => {
-    dot.classList.remove('active', 'done');
-    if (i === currentStep) dot.classList.add('active');
-    else if (i < currentStep) dot.classList.add('done');
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nameEl = document.getElementById('cName');
+    const errorEl = document.getElementById('cNameError');
+    const name = nameEl.value.trim();
+    if (name.length < 2) {
+      errorEl.textContent = TXT.nameError;
+      nameEl.setAttribute('aria-invalid', 'true');
+      shakeEl(nameEl);
+      nameEl.focus();
+      return;
+    }
+    errorEl.textContent = '';
+    nameEl.removeAttribute('aria-invalid');
+    const interest = document.getElementById('cInterest').value;
+    const message = document.getElementById('cMessage').value.trim();
+    let text = TXT.hello(name);
+    if (interest) text += `\n${TXT.interest}: ${interest}`;
+    if (message) text += `\n\n${message}`;
+    const number = (contactForm.dataset.wa || '').replace(/\D/g, '');
+    const url = `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+    const win = window.open(url, '_blank', 'noopener');
+    if (!win) window.location.href = url; // si el navegador bloquea la pestaña nueva
   });
-  panels.forEach((p, i) => {
-    p.classList.toggle('active', i === currentStep);
+  document.getElementById('cName').addEventListener('input', (e) => {
+    if (e.target.value.trim().length >= 2) {
+      document.getElementById('cNameError').textContent = '';
+      e.target.removeAttribute('aria-invalid');
+    }
   });
 }
 
-window.nextStep = function() {
-  // Validate current step
-  if (currentStep === 0) {
-    const name = document.getElementById('qName').value.trim();
-    const email = document.getElementById('qEmail').value.trim();
-    if (!name || name.length < 2) {
-      shakeEl(document.getElementById('qName'));
-      document.getElementById('qName').focus();
-      return;
-    }
-    if (!email || !email.includes('@')) {
-      shakeEl(document.getElementById('qEmail'));
-      document.getElementById('qEmail').focus();
-      return;
-    }
-  }
-  if (currentStep < totalSteps - 1) {
-    currentStep++;
-    updateSteps();
-  }
-};
-window.prevStep = function() {
-  if (currentStep > 0) {
-    currentStep--;
-    updateSteps();
-  }
-};
-
 function shakeEl(el) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   el.style.borderColor = '#e6836e';
   el.style.animation = 'shake .4s';
   setTimeout(() => { el.style.borderColor = ''; el.style.animation = ''; }, 500);
 }
 
-// Service chips
-document.querySelectorAll('.svc-chip').forEach(chip => {
-  chip.addEventListener('click', () => chip.classList.toggle('selected'));
-});
-
-// Budget slider
-const budgetRange = document.getElementById('budgetRange');
-const budgetAmount = document.getElementById('budgetAmount');
-budgetRange.addEventListener('input', () => {
-  const v = parseInt(budgetRange.value);
-  budgetAmount.textContent = v >= 500000 ? '500,000+' : v.toLocaleString('en-US');
-});
-
-// Submit
-window.submitQuote = function() {
-  const name = document.getElementById('qName').value.trim();
-  const email = document.getElementById('qEmail').value.trim();
-  const company = document.getElementById('qCompany').value.trim();
-  const phone = document.getElementById('qPhone').value.trim();
-  const details = document.getElementById('qDetails').value.trim();
-  const urgency = document.getElementById('qUrgency').value;
-  const source = document.getElementById('qSource').value;
-  const budget = budgetRange.value;
-
-  const selectedSvcs = [];
-  document.querySelectorAll('.svc-chip.selected').forEach(c => selectedSvcs.push(c.dataset.svc));
-
-  // Gen code
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  let code = 'CM-';
-  for (let i = 0; i < 8; i++) code += chars[Math.floor(Math.random() * chars.length)];
-
-  // Build WhatsApp message
-  let waMsg = `🏆 *NUEVA SOLICITUD DE COTIZACIÓN*\n\n`;
-  waMsg += `♟ *Código:* ${code}\n`;
-  waMsg += `👤 *Nombre:* ${name}\n`;
-  if (company) waMsg += `🏢 *Empresa:* ${company}\n`;
-  waMsg += `📧 *Email:* ${email}\n`;
-  if (phone) waMsg += `📱 *Teléfono:* ${phone}\n`;
-  if (selectedSvcs.length) waMsg += `🎯 *Servicios:* ${selectedSvcs.join(', ')}\n`;
-  waMsg += `💰 *Presupuesto:* $${parseInt(budget).toLocaleString('en-US')} MXN\n`;
-  if (urgency) waMsg += `⚡ *Urgencia:* ${urgency}\n`;
-  if (source) waMsg += `📍 *Fuente:* ${source}\n`;
-  if (details) waMsg += `\n📋 *Detalles:*\n${details}\n`;
-  waMsg += `\n_Enviado desde checkmate.company_`;
-
-  // Show success
-  document.getElementById('quoteForm').style.display = 'none';
-  document.querySelector('.form-steps').style.display = 'none';
-  document.getElementById('successCode').textContent = code;
-  const fs = document.getElementById('formSuccess');
-  fs.classList.add('active');
-
-  // Update WhatsApp link in success
-  const waLink = fs.querySelector('a.btn-primary');
-  waLink.href = `https://wa.me/5215537705731?text=${encodeURIComponent(waMsg)}`;
-
-  // Also open WhatsApp
-  setTimeout(() => {
-    window.open(`https://wa.me/5215537705731?text=${encodeURIComponent(waMsg)}`, '_blank');
-  }, 800);
-};
-
 // Add shake keyframes
 const style = document.createElement('style');
 style.textContent = `@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}`;
 document.head.appendChild(style);
-
-/* ════════ CARD HOVER TILT ════════ */
-if (window.innerWidth > 768) {
-  document.querySelectorAll('.service-card, .why-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const r = card.getBoundingClientRect();
-      const rx = ((e.clientY - r.top) / r.height - 0.5) * -4;
-      const ry = ((e.clientX - r.left) / r.width - 0.5) * 4;
-      card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
-}
 
 })();
 
