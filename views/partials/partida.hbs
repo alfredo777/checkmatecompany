@@ -1,0 +1,33 @@
+{{!-- Partida registrada en Hyper Clock + tablero sincronizado con el video (datos: contents/partida-opera(-en).json) --}}
+<section class="section-pad section-alt" id="partida" aria-labelledby="partida-title">
+  <div class="container">
+    <h2 class="section-title reveal" id="partida-title">{{partida_opera.titulo}}, <span class="gold-text">{{t.gameTitleA}}</span></h2>
+    <p class="section-desc reveal">{{partida_opera.blancas}} {{t.vs}} {{partida_opera.negras}}, {{partida_opera.lugar}}. {{t.gameDesc}}</p>
+
+    <div class="synced reveal" data-synced-game>
+      <script type="application/json">{{{json partida_opera}}}</script>
+
+      <div class="synced-phone">
+        <video src="{{asset partida_opera.video}}" poster="{{asset partida_opera.poster}}" muted playsinline preload="metadata" controls width="540" height="1136"
+               aria-label="{{t.gameVideoAria}}"></video>
+      </div>
+
+      <div class="synced-board">
+        <svg viewBox="0 0 360 360" role="img" aria-label="{{t.gameBoardAria}}">
+          <rect width="360" height="360" fill="url(#sq)"/>
+          <rect data-mark="from" class="mark" width="45" height="45"/>
+          <rect data-mark="to" class="mark" width="45" height="45"/>
+          <rect data-mark="check" class="mark-check" width="45" height="45" fill="url(#checkGlow)"/>
+          <g data-layer="pieces"></g>
+        </svg>
+        <p class="synced-now" aria-live="off"><span>{{partida_opera.blancas}} · {{partida_opera.resultado}}</span><strong data-now>{{partida_opera.lugar}}</strong></p>
+      </div>
+
+      <ol class="game-moves" aria-label="{{t.gameMovesAria}}">
+        {{#each partida_opera.jugadas}}
+        <li><button type="button" class="game-move game-move-{{this.side}}" data-ply="{{@index}}"><span class="gm-n">{{this.n}}{{#if (eq this.side "w")}}.{{else}}…{{/if}}</span> {{this.txt}}</button></li>
+        {{/each}}
+      </ol>
+    </div>
+  </div>
+</section>

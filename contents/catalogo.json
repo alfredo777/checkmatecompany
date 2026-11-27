@@ -1,0 +1,79 @@
+{
+  "marca": {
+    "nombre": "CheckMate Company",
+    "lema": "Cada movimiento cuenta.",
+    "descripcion": "Hacemos productos de ajedrez para jugar mejor sobre un tablero de verdad. El primero es Hyper Clock: el reloj de ajedrez que registra tu partida.",
+    "whatsapp": "5215537705731",
+    "whatsappVisible": "+52 1 55 3770 5731",
+    "email": "hola@checkmate.company",
+    "web": "checkmate.company",
+    "instagram": "",
+    "facebook": ""
+  },
+  "apps": [
+    {
+      "nombre": "Hyper Clock",
+      "tipo": "Reloj de ajedrez",
+      "lema": "Like a pro in your phone",
+      "imagen": "/assets/images/app-hyper-clock.png",
+      "descripcion": "El reloj de ajedrez en tu teléfono. Elige el ritmo, toca tu mitad al terminar la jugada y al final la partida se guarda con cada jugada y su tiempo.",
+      "funciones": [
+        "Bala, blitz, rápida y clásica",
+        "Incremento por jugada",
+        "Jaque mate, abandono o tablas",
+        "Historial de partidas",
+        "Nombres y Elo de los jugadores",
+        "7 idiomas"
+      ],
+      "estado": "Próximamente en App Store y Google Play",
+      "ios": "",
+      "android": "",
+      "video": "/assets/video/hyper-clock-opera-es.mp4",
+      "videoPoster": "/assets/video/hyper-clock-opera-es-poster.webp",
+      "capturas": [
+        {
+          "src": "/assets/images/hyper-clock/es/jugada-blancas.webp",
+          "alt": "Reloj en marcha: las blancas anotan Ab5+ tocando alfil, b, 5 y jaque",
+          "titulo": "Anota cada jugada",
+          "texto": "Al tocar el reloj, tu mitad muestra pieza, columna y fila. Tres toques y la jugada queda registrada.",
+          "portada": true
+        },
+        {
+          "src": "/assets/images/hyper-clock/es/jugada-negras.webp",
+          "alt": "La mitad de las negras, girada para el jugador de enfrente, anotando Cd7",
+          "titulo": "Cada quien en su lado",
+          "texto": "La mitad de arriba se gira para el rival: los dos anotan sin voltear el teléfono.",
+          "portada": true
+        },
+        {
+          "src": "/assets/images/hyper-clock/es/resultado.webp",
+          "alt": "Fin de la partida: gana Morphy por jaque mate en 33 jugadas",
+          "titulo": "Jaque mate en un toque",
+          "texto": "Marca # y el reloj se detiene, confirma el mate y guarda la partida con fecha y hora.",
+          "portada": true
+        },
+        {
+          "src": "/assets/images/hyper-clock/es/jugadas.webp",
+          "alt": "Lista de jugadas de la partida con el tiempo que tomó cada una",
+          "titulo": "Tu partida, completa",
+          "texto": "Todas las jugadas con el tiempo de cada una, lista para revisar o compartir en PGN.",
+          "portada": true
+        },
+        {
+          "src": "/assets/images/hyper-clock/es/partida.webp",
+          "alt": "Resumen de la partida: resultado, ritmo y tiempo promedio por jugador",
+          "titulo": "Cómo se jugó",
+          "texto": "Resultado, ritmo, tiempo promedio por jugador y la jugada más larga de cada uno.",
+          "portada": false
+        },
+        {
+          "src": "/assets/images/hyper-clock/es/inicio.webp",
+          "alt": "Pantalla de inicio: nombres de los jugadores, Elo opcional y ritmos de juego",
+          "titulo": "Lista en segundos",
+          "texto": "Nombres, Elo opcional y el ritmo de juego: bala, blitz, rápida o clásica.",
+          "portada": false
+        }
+      ]
+    }
+  ]
+}

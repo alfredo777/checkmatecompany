@@ -1,0 +1,27 @@
+<a class="skip-link" href="#contenido">{{t.skip}}</a>
+<nav class="nav" id="nav" aria-label="{{t.navAria}}">
+  <div class="container">
+    <a href="{{homeHref}}" class="nav-brand" aria-label="{{t.homeAria}}">
+      <img src="{{asset '/assets/images/logo-horizontal-nolema.png'}}" alt="" class="nav-logo" width="162" height="40">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="{{base}}/hyper-clock"{{#if (eq page "hyper-clock")}} aria-current="page" class="active"{{/if}}>Hyper Clock</a>
+      <a href="{{homeHref}}#partida">{{t.navGame}}</a>
+      <a href="/blog"{{#if (eq lang "en")}} hreflang="es"{{/if}}>{{t.navBlog}}</a>
+      <a href="{{homeHref}}#contacto">{{t.navContact}}</a>
+    </div>
+    <div class="nav-actions">
+      <a href="{{altHref}}" class="lang-switch" hreflang="{{t.switchToLang}}" lang="{{t.switchToLang}}" aria-label="{{t.switchAria}}">{{t.switchTo}}</a>
+      <a href="{{homeHref}}#contacto" class="nav-cta desktop-only">{{t.writeUs}}</a>
+      <button class="nav-hamburger" id="navHamburger" type="button" aria-label="{{t.menuOpen}}" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="{{base}}/hyper-clock">Hyper Clock</a>
+  <a href="{{homeHref}}#partida">{{t.navGame}}</a>
+  <a href="/blog"{{#if (eq lang "en")}} hreflang="es"{{/if}}>{{t.navBlog}}</a>
+  <a href="{{homeHref}}#contacto">{{t.navContact}}</a>
+</div>

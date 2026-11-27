@@ -1,0 +1,312 @@
+{
+ "titulo": "The Opera Game",
+ "lugar": "Paris, 1858",
+ "blancas": "Morphy",
+ "negras": "Brunswick",
+ "resultado": "1-0",
+ "video": "/assets/video/opera-telefono-en.mp4",
+ "poster": "/assets/video/opera-telefono-en-poster.webp",
+ "jugadas": [
+  {
+   "n": 1,
+   "side": "w",
+   "san": "e4",
+   "txt": "e4",
+   "from": "e2",
+   "to": "e4",
+   "t": 4.9
+  },
+  {
+   "n": 1,
+   "side": "b",
+   "san": "e5",
+   "txt": "e5",
+   "from": "e7",
+   "to": "e5",
+   "t": 8.01
+  },
+  {
+   "n": 2,
+   "side": "w",
+   "san": "Nf3",
+   "txt": "Nf3",
+   "from": "g1",
+   "to": "f3",
+   "t": 10.29
+  },
+  {
+   "n": 2,
+   "side": "b",
+   "san": "d6",
+   "txt": "d6",
+   "from": "d7",
+   "to": "d6",
+   "t": 14.22
+  },
+  {
+   "n": 3,
+   "side": "w",
+   "san": "d4",
+   "txt": "d4",
+   "from": "d2",
+   "to": "d4",
+   "t": 16.53
+  },
+  {
+   "n": 3,
+   "side": "b",
+   "san": "Bg4",
+   "txt": "Bg4",
+   "from": "c8",
+   "to": "g4",
+   "t": 19.39
+  },
+  {
+   "n": 4,
+   "side": "w",
+   "san": "dxe5",
+   "txt": "dxe5",
+   "from": "d4",
+   "to": "e5",
+   "t": 23.11
+  },
+  {
+   "n": 4,
+   "side": "b",
+   "san": "Bxf3",
+   "txt": "Bxf3",
+   "from": "g4",
+   "to": "f3",
+   "t": 25.31
+  },
+  {
+   "n": 5,
+   "side": "w",
+   "san": "Qxf3",
+   "txt": "Qxf3",
+   "from": "d1",
+   "to": "f3",
+   "t": 28.3
+  },
+  {
+   "n": 5,
+   "side": "b",
+   "san": "dxe5",
+   "txt": "dxe5",
+   "from": "d6",
+   "to": "e5",
+   "t": 31.46
+  },
+  {
+   "n": 6,
+   "side": "w",
+   "san": "Bc4",
+   "txt": "Bc4",
+   "from": "f1",
+   "to": "c4",
+   "t": 34.34
+  },
+  {
+   "n": 6,
+   "side": "b",
+   "san": "Nf6",
+   "txt": "Nf6",
+   "from": "g8",
+   "to": "f6",
+   "t": 37.36
+  },
+  {
+   "n": 7,
+   "side": "w",
+   "san": "Qb3",
+   "txt": "Qb3",
+   "from": "f3",
+   "to": "b3",
+   "t": 40.43
+  },
+  {
+   "n": 7,
+   "side": "b",
+   "san": "Qe7",
+   "txt": "Qe7",
+   "from": "d8",
+   "to": "e7",
+   "t": 43.5
+  },
+  {
+   "n": 8,
+   "side": "w",
+   "san": "Nc3",
+   "txt": "Nc3",
+   "from": "b1",
+   "to": "c3",
+   "t": 46.59
+  },
+  {
+   "n": 8,
+   "side": "b",
+   "san": "c6",
+   "txt": "c6",
+   "from": "c7",
+   "to": "c6",
+   "t": 49.58
+  },
+  {
+   "n": 9,
+   "side": "w",
+   "san": "Bg5",
+   "txt": "Bg5",
+   "from": "c1",
+   "to": "g5",
+   "t": 52.58
+  },
+  {
+   "n": 9,
+   "side": "b",
+   "san": "b5",
+   "txt": "b5",
+   "from": "b7",
+   "to": "b5",
+   "t": 55.76
+  },
+  {
+   "n": 10,
+   "side": "w",
+   "san": "Nxb5",
+   "txt": "Nxb5",
+   "from": "c3",
+   "to": "b5",
+   "t": 58.84
+  },
+  {
+   "n": 10,
+   "side": "b",
+   "san": "cxb5",
+   "txt": "cxb5",
+   "from": "c6",
+   "to": "b5",
+   "t": 62.0
+  },
+  {
+   "n": 11,
+   "side": "w",
+   "san": "Bxb5+",
+   "txt": "Bxb5+",
+   "from": "c4",
+   "to": "b5",
+   "t": 65.24
+  },
+  {
+   "n": 11,
+   "side": "b",
+   "san": "Nbd7",
+   "txt": "Nbd7",
+   "from": "b8",
+   "to": "d7",
+   "t": 68.71
+  },
+  {
+   "n": 12,
+   "side": "w",
+   "san": "O-O-O",
+   "txt": "O-O-O",
+   "from": "e1",
+   "to": "c1",
+   "t": 72.2,
+   "rook": [
+    "a1",
+    "d1"
+   ]
+  },
+  {
+   "n": 12,
+   "side": "b",
+   "san": "Rd8",
+   "txt": "Rd8",
+   "from": "a8",
+   "to": "d8",
+   "t": 74.16
+  },
+  {
+   "n": 13,
+   "side": "w",
+   "san": "Rxd7",
+   "txt": "Rxd7",
+   "from": "d1",
+   "to": "d7",
+   "t": 77.17
+  },
+  {
+   "n": 13,
+   "side": "b",
+   "san": "Rxd7",
+   "txt": "Rxd7",
+   "from": "d8",
+   "to": "d7",
+   "t": 80.56
+  },
+  {
+   "n": 14,
+   "side": "w",
+   "san": "Rd1",
+   "txt": "Rd1",
+   "from": "h1",
+   "to": "d1",
+   "t": 83.53
+  },
+  {
+   "n": 14,
+   "side": "b",
+   "san": "Qe6",
+   "txt": "Qe6",
+   "from": "e7",
+   "to": "e6",
+   "t": 86.66
+  },
+  {
+   "n": 15,
+   "side": "w",
+   "san": "Bxd7+",
+   "txt": "Bxd7+",
+   "from": "b5",
+   "to": "d7",
+   "t": 89.8
+  },
+  {
+   "n": 15,
+   "side": "b",
+   "san": "Nxd7",
+   "txt": "Nxd7",
+   "from": "f6",
+   "to": "d7",
+   "t": 93.44
+  },
+  {
+   "n": 16,
+   "side": "w",
+   "san": "Qb8+",
+   "txt": "Qb8+",
+   "from": "b3",
+   "to": "b8",
+   "t": 96.65
+  },
+  {
+   "n": 16,
+   "side": "b",
+   "san": "Nxb8",
+   "txt": "Nxb8",
+   "from": "d7",
+   "to": "b8",
+   "t": 100.26
+  },
+  {
+   "n": 17,
+   "side": "w",
+   "san": "Rd8#",
+   "txt": "Rd8#",
+   "from": "d1",
+   "to": "d8",
+   "t": 103.54
+  }
+ ]
+}

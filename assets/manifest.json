@@ -1,0 +1,13 @@
+{
+  "name": "CheckMate Company",
+  "short_name": "CheckMate",
+  "description": "Productos de ajedrez locales y digitales: apps, tienda, clases y torneos.",
+  "lang": "es",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06060b",
+  "theme_color": "#06060b",
+  "icons": [
+    { "src": "/assets/images/icon.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any" }
+  ]
+}

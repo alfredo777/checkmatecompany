@@ -1,0 +1,32 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-icon"><img src="{{asset '/assets/images/logo-stacked-nolema.png'}}" alt="CheckMate Company" width="160" height="114" loading="lazy" decoding="async"></div>
+        <p class="footer-brand-desc">{{catalogo.marca.lema}} {{catalogo.marca.descripcion}}</p>
+      </div>
+      <nav class="footer-col" aria-label="{{t.footProducts}}">
+        <h2>{{t.footProducts}}</h2>
+        <a href="{{base}}/hyper-clock">Hyper Clock</a>
+        <a href="{{homeHref}}#partida">{{partida_opera.titulo}}</a>
+        <a href="/blog"{{#if (eq lang "en")}} hreflang="es"{{/if}}>{{t.navBlog}}</a>
+      </nav>
+      <div class="footer-col">
+        <h2>{{t.footContact}}</h2>
+        <a href="{{waLink catalogo.marca.whatsapp}}" target="_blank" rel="noopener">{{catalogo.marca.whatsappVisible}}</a>
+        <a href="mailto:{{catalogo.marca.email}}">{{catalogo.marca.email}}</a>
+        {{#if catalogo.marca.instagram}}<a href="{{catalogo.marca.instagram}}" target="_blank" rel="noopener">Instagram</a>{{/if}}
+        {{#if catalogo.marca.facebook}}<a href="{{catalogo.marca.facebook}}" target="_blank" rel="noopener">Facebook</a>{{/if}}
+      </div>
+      <nav class="footer-col" aria-label="{{t.footLegal}}">
+        <h2>{{t.footLegal}}</h2>
+        <a href="/terms">{{t.footTerms}}</a>
+        <a href="/privacy">{{t.footPrivacy}}</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© {{year}} CheckMate Company. {{t.footRights}}</span>
+      <a href="{{altHref}}" class="lang-switch" hreflang="{{t.switchToLang}}" lang="{{t.switchToLang}}" aria-label="{{t.switchAria}}">{{t.switchTo}}</a>
+    </div>
+  </div>
+</footer>
